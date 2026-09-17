@@ -1,0 +1,19 @@
+type,value,defanged,context,enrichment_verdict,confidence
+ipv4,154.86.119.60,154[.]86[.]119[.]60,"tion paths, discovered via an exposed operator directory at 154.86.119.60. Campa",,High
+ipv4,185.132.53.56,185[.]132[.]53[.]56,"4.86.119.60 (AS197574, Amsterdam) - Secondary payload host: 185.132.53.56 - Abus",,High
+domain,easy4ipcloud.com,easy4ipcloud[.]com,ry payload host: 185.132.53.56 - Abused legitimate service: easy4ipcloud.com:880,abused-legit/enumeration,Medium
+domain,dahuaddns.com,dahuaddns[.]com,"ud.com:8800 (Dahua P2P relay) - Serial enumeration sources: dahuaddns.com , quic",abused-legit/enumeration,Medium
+domain,quickddns.com,quickddns[.]com,"ua P2P relay) - Serial enumeration sources: dahuaddns.com , quickddns.com - Exfi",abused-legit/enumeration,Medium
+sha256,de03a0ae5c7aa0c237ae36a649875f986fd9701ac06857dd214054367ce5090c,de03a0ae5c7aa0c237ae36a649875f986fd9701ac06857dd214054367ce5090c,"via RPC) - Windows stealer binary (SalatStealer), SHA-256: de03a0ae5c7aa0c237ae3","n/a (VT skipped, no key) - full hash ready",High
+sha256,694bfbe44bcd9b4844e15294be74dafe86ff8ae40b8b1067f4dae70a6ef75da8,694bfbe44bcd9b4844e15294be74dafe86ff8ae40b8b1067f4dae70a6ef75da8,"th 154.86.119.60 and 185.132.53.56 - p2pwn Go ELF, SHA-256: 694bfbe44bcd9b4844e1","n/a (VT skipped, no key) - full hash ready",High
+sha256,be2738c8a2beb55ac484d71c329381f3caabac80664283ad9a24dbab82b5b590,be2738c8a2beb55ac484d71c329381f3caabac80664283ad9a24dbab82b5b590,"e40b8b1067f4dae70a6ef75da8 - p2pwn source archive, SHA-256: be2738c8a2beb55ac484","n/a (VT skipped, no key) - full hash ready",High
+cve,CVE-2021-33044,CVE-2021-33044,"12,324 unique IPs via credential spraying on port 37777. 2. CVE-2021-33044 (NetK",,High
+cve,CVE-2021-33045,CVE-2021-33045,authentication by spoofing hardware controller identity. 3. CVE-2021-33045 (Loop,,High
+cve,CVE-2024-39943,CVE-2024-39943,"C:\Users\SystemX\Downloads\seria === NOTABLE FINDING === ""CVE-2024-39943 is the ",,MISLABELED by tool (see notes)
+file_path,C:\Users\SystemX\Downloads\seria,C:\Users\SystemX\Downloads\seria,operator dev machine,,Medium
+malware,SalatStealer,SalatStealer,"""Windows stealer binary (SalatStealer)""; UPX-packed 32-bit; SHA256 de03a0ae...",infostealer,High
+malware,p2pwn,p2pwn,"""p2pwn backdoor account""; Go ELF + source archive; installs p2pwn/p2password acc",backdoor/toolkit,High
+tool,asleep_scanner,asleep_scanner,brute-force engine (asyncio),d34db33f-1007,Medium
+tool,CCTV-Scanner,CCTV-Scanner,camera fingerprinting,ipxobd,Medium
+tool,add-defender-exclusions.ps1,add-defender-exclusions.ps1,Windows Defender evasion (5 methods),,Medium
+threat-actor,Operation CameraSwarm operator (unnamed),,"single operator, UA/RU victims",no MITRE G-ID,Low

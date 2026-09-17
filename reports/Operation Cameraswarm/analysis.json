@@ -1,0 +1,480 @@
+{
+  "report_title": "Operation CameraSwarm - Dahua Cameras Compromised",
+  "source": "https://hunt.io/blog/operation-cameraswarm-dahua-cameras-compromised",
+  "provider": "Hunt.io",
+  "generated_utc": "2026-09-03T20:55:46.758583Z",
+  "confidence_rubric": {
+    "High": "0.85-1.0 stated w/ specifics",
+    "Medium": "0.5-0.84 strong inference",
+    "Low": "0.15-0.49 weak/ambiguous",
+    "Speculative": "<0.15 hypothesis"
+  },
+  "technique_mappings": [
+    {
+      "behavior": "Mass scan IPv4 space for Dahua cameras on port 37777",
+      "technique_id": "T1595.001",
+      "technique_name": "Active Scanning: Scanning IP Blocks",
+      "framework": "ATT&CK",
+      "kill_chain": "Reconnaissance",
+      "evidence": "\"12,324 unique IPs via credential spraying on port 37777\"",
+      "rationale": "Wide IP scanning to find exposed devices.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Enumerate camera serials via DDNS services",
+      "technique_id": "T1596.005",
+      "technique_name": "Search Open Technical Databases: Scan Databases",
+      "framework": "ATT&CK",
+      "kill_chain": "Reconnaissance",
+      "evidence": "Serial enumeration sources dahuaddns[.]com, quickddns[.]com",
+      "rationale": "DDNS lookups mine device serials for P2P targeting.",
+      "confidence": "Medium",
+      "score": 0.7
+    },
+    {
+      "behavior": "Assemble toolkit from third-party public tools",
+      "technique_id": "T1588.002",
+      "technique_name": "Obtain Capabilities: Tool",
+      "framework": "ATT&CK",
+      "kill_chain": "Weaponization",
+      "evidence": "components credited to asleep_scanner (d34db33f-1007), p2pwn (thebadinteger), CCTV-Scanner (ipxobd)",
+      "rationale": "Operator sources and stitches existing offensive tools.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Stage payloads on operator-controlled hosts",
+      "technique_id": "T1608.001",
+      "technique_name": "Stage Capabilities: Upload Malware",
+      "framework": "ATT&CK",
+      "kill_chain": "Weaponization",
+      "evidence": "SalatStealer observed on both 154.86.119[.]60 and 185.132.53[.]56",
+      "rationale": "Malware hosted on staging/payload servers for delivery.",
+      "confidence": "High",
+      "score": 0.8
+    },
+    {
+      "behavior": "Exploit camera auth-bypass vulnerabilities",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "framework": "ATT&CK",
+      "kill_chain": "Exploitation",
+      "evidence": "CVE-2021-33044 (NetKeyboard bypass), CVE-2021-33045 (loopback spoof)",
+      "rationale": "Two CVEs bypass camera authentication directly.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Brute-force / spray credentials on port 37777",
+      "technique_id": "T1110.003",
+      "technique_name": "Brute Force: Password Spraying",
+      "framework": "ATT&CK",
+      "kill_chain": "Exploitation",
+      "evidence": "\"Brute-force (asyncio engine): 12,324 unique IPs via credential spraying\"",
+      "rationale": "Credential spraying against the management protocol.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Reach NAT'd cameras via P2P PTCP tunnel",
+      "technique_id": "T1572",
+      "technique_name": "Protocol Tunneling",
+      "framework": "ATT&CK",
+      "kill_chain": "Command & Control",
+      "evidence": "\"P2P Relay (PTCP tunnel): Reaches NAT'd cameras\"; abused easy4ipcloud[.]com:8800",
+      "rationale": "Tunneling through the vendor P2P relay bypasses NAT.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Create hidden p2pwn/p2password backdoor account",
+      "technique_id": "T1136.001",
+      "technique_name": "Create Account: Local Account",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"Backdoor Account: p2pwn / p2password (installed on 1,923 cameras via RPC)\"; survives factory reset",
+      "rationale": "Durable local account is the core persistence.",
+      "confidence": "High",
+      "score": 0.95
+    },
+    {
+      "behavior": "Abuse default/weak device accounts",
+      "technique_id": "T1078.001",
+      "technique_name": "Valid Accounts: Default Accounts",
+      "framework": "ATT&CK",
+      "kill_chain": "Exploitation",
+      "evidence": "credential spraying implies default/common camera creds",
+      "rationale": "Spraying leans on factory-default credentials.",
+      "confidence": "Medium",
+      "score": 0.6
+    },
+    {
+      "behavior": "Capture camera video feeds",
+      "technique_id": "T1125",
+      "technique_name": "Video Capture",
+      "framework": "ATT&CK",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "compromise of IP cameras; access-as-a-service to live feeds",
+      "rationale": "Cameras yield live video; T1125 fits better than the article's T1113.",
+      "confidence": "Medium",
+      "score": 0.65
+    },
+    {
+      "behavior": "Screen/credential capture via Windows stealer (article-cited)",
+      "technique_id": "T1113",
+      "technique_name": "Screen Capture",
+      "framework": "ATT&CK",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "article cites T1113; SalatStealer Windows component",
+      "rationale": "Article-cited; retained for traceability alongside T1125.",
+      "confidence": "Medium",
+      "score": 0.55
+    },
+    {
+      "behavior": "UPX-pack the stealer binary",
+      "technique_id": "T1027.002",
+      "technique_name": "Obfuscated Files or Information: Software Packing",
+      "framework": "ATT&CK",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "\"UPX-packed 32-bit executable\"",
+      "rationale": "Packing evades static AV signatures.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Add Windows Defender exclusions via PowerShell",
+      "technique_id": "T1562.001",
+      "technique_name": "Impair Defenses: Disable or Modify Tools",
+      "framework": "ATT&CK",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "add-defender-exclusions.ps1, \"five redundant Defender bypass methods including Group Policy persistence\"",
+      "rationale": "Neutralizes host AV to run the stealer.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Exfiltrate to Telegram Bot API + VKontakte",
+      "technique_id": "T1567.004",
+      "technique_name": "Exfiltration Over Web Service: Exfiltration Over Webhook",
+      "framework": "ATT&CK",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "\"Exfiltration Channel: Telegram Bot API + VKontakte community wall-163997495\"",
+      "rationale": "Legit web services used as exfil webhooks.",
+      "confidence": "High",
+      "score": 0.9
+    }
+  ],
+  "atlas_mappings": [],
+  "atlas_note": "No MITRE ATLAS techniques apply: this campaign targets IoT/IP cameras, not AI/ML systems.",
+  "kill_chain": {
+    "Reconnaissance": [
+      {
+        "behavior": "Scan port 37777 across IPv4; enumerate serials via DDNS",
+        "evidence": "12,324 IPs sprayed; dahuaddns[.]com/quickddns[.]com",
+        "technique": "T1595.001, T1596.005",
+        "confidence": "High",
+        "score": 0.85
+      }
+    ],
+    "Weaponization": [
+      {
+        "behavior": "Assemble + stage third-party toolkit (p2pwn, asleep_scanner, SalatStealer)",
+        "evidence": "upstream tool credits; payloads on 154.86.119[.]60 & 185.132.53[.]56",
+        "technique": "T1588.002, T1608.001",
+        "confidence": "High",
+        "score": 0.8
+      }
+    ],
+    "Delivery": [
+      {
+        "behavior": "Deliver exploit/creds over Dahua mgmt protocol and P2P relay",
+        "evidence": "port 37777; easy4ipcloud[.]com:8800 P2P relay",
+        "technique": "T1190 / T1572",
+        "confidence": "High",
+        "score": 0.8
+      }
+    ],
+    "Exploitation": [
+      {
+        "behavior": "Auth bypass (CVE-2021-33044/33045) or credential spray",
+        "evidence": "three parallel exploitation paths",
+        "technique": "T1190, T1110.003",
+        "confidence": "High",
+        "score": 0.9
+      }
+    ],
+    "Installation": [
+      {
+        "behavior": "Implant p2pwn/p2password account surviving factory reset; generate serial recovery codes",
+        "evidence": "\"installed on 1,923 cameras via RPC\"; \"survives a password change and ... factory reset\"",
+        "technique": "T1136.001",
+        "confidence": "High",
+        "score": 0.9
+      }
+    ],
+    "Command & Control": [
+      {
+        "behavior": "P2P PTCP tunnel via abused vendor relay; staging server C2",
+        "evidence": "easy4ipcloud[.]com:8800; 154.86.119[.]60",
+        "technique": "T1572",
+        "confidence": "High",
+        "score": 0.85
+      }
+    ],
+    "Actions on Objectives": [
+      {
+        "behavior": "Capture feeds; run SalatStealer; exfil via Telegram/VK; access-as-a-service handoff",
+        "evidence": "recovery codes \"designed for third-party handoff\"; Telegram + VKontakte",
+        "technique": "T1125, T1113, T1567.004, T1027.002, T1562.001",
+        "confidence": "High",
+        "score": 0.85
+      }
+    ]
+  },
+  "diamond_model": {
+    "adversary": {
+      "value": "Unnamed single operator ('Operation CameraSwarm'). Toolkit stitched from public GitHub tools (d34db33f-1007, thebadinteger, ipxobd, +others in THANKS.md).",
+      "evidence": "\"a single operator compromised 14,530+ Dahua IP cameras\"; component credits",
+      "confidence": "Low",
+      "score": 0.4,
+      "note": "No named actor and no ATT&CK G-ID. Upstream authors are tool credits, NOT confirmed as the operator."
+    },
+    "capability": {
+      "value": "p2pwn backdoor toolkit (Go ELF); SalatStealer infostealer; asleep_scanner; CCTV-Scanner; CVE-2021-33044/33045; serial recovery-code generation; add-defender-exclusions.ps1",
+      "evidence": "IOC hashes; tool credits",
+      "confidence": "High",
+      "score": 0.9
+    },
+    "infrastructure": {
+      "value": "C2/staging 154.86.119[.]60 (AS197574, Amsterdam); payload host 185.132.53[.]56; abused P2P relay easy4ipcloud[.]com:8800; serial sources dahuaddns[.]com / quickddns[.]com; exfil Telegram + VKontakte; port 37777/TCP",
+      "evidence": "IOC infrastructure list",
+      "confidence": "High",
+      "score": 0.9
+    },
+    "victim": {
+      "value": "14,530+ Dahua IP cameras across Ukraine and Russia (1,923 confirmed backdoored)",
+      "evidence": "campaign overview; 17 Jun-22 Jul 2026",
+      "confidence": "High",
+      "score": 0.9
+    },
+    "meta": {
+      "timeframe": "17 June - 22 July 2026",
+      "attribution_confidence": "Low (0.4) - unnamed operator; assembled from third-party tooling; victims in UA/RU"
+    }
+  },
+  "incidents": [
+    {
+      "id": "INC-1",
+      "name": "Operation CameraSwarm - Dahua camera mass compromise",
+      "confidence": "High",
+      "score": 0.9,
+      "rationale": "Directly documented: 14,530+ cameras, three exploitation paths, p2pwn backdoor, staging server 154.86.119[.]60, exfil channels.",
+      "linked_iocs": [
+        "154.86.119.60",
+        "185.132.53.56",
+        "p2pwn",
+        "SalatStealer"
+      ]
+    },
+    {
+      "id": "INC-1a",
+      "name": "Brute-force path (asyncio spraying on 37777)",
+      "confidence": "High",
+      "score": 0.85,
+      "rationale": "12,324 IPs sprayed.",
+      "linked_iocs": [
+        "T1110.003"
+      ]
+    },
+    {
+      "id": "INC-1b",
+      "name": "CVE auth-bypass path",
+      "confidence": "High",
+      "score": 0.85,
+      "rationale": "CVE-2021-33044 / CVE-2021-33045 bypass camera auth.",
+      "linked_iocs": [
+        "CVE-2021-33044",
+        "CVE-2021-33045"
+      ]
+    },
+    {
+      "id": "INC-1c",
+      "name": "P2P-relay path",
+      "confidence": "High",
+      "score": 0.85,
+      "rationale": "\"89.4 percent of live serials returned open channel requiring no authentication\".",
+      "linked_iocs": [
+        "easy4ipcloud.com"
+      ]
+    }
+  ],
+  "indicators": {
+    "sha256": [
+      {
+        "value": "de03a0ae5c7aa0c237ae36a649875f986fd9701ac06857dd214054367ce5090c",
+        "defanged": "de03a0ae5c7aa0c237ae36a649875f986fd9701ac06857dd214054367ce5090c",
+        "context": "via RPC) - Windows stealer binary (SalatStealer), SHA-256: de03a0ae5c7aa0c237ae36a649875f986fd9701ac06857dd214054367ce5090c ; UPX-packed 32-bit executable; observed on both 154.86.119"
+      },
+      {
+        "value": "694bfbe44bcd9b4844e15294be74dafe86ff8ae40b8b1067f4dae70a6ef75da8",
+        "defanged": "694bfbe44bcd9b4844e15294be74dafe86ff8ae40b8b1067f4dae70a6ef75da8",
+        "context": "th 154.86.119.60 and 185.132.53.56 - p2pwn Go ELF, SHA-256: 694bfbe44bcd9b4844e15294be74dafe86ff8ae40b8b1067f4dae70a6ef75da8 - p2pwn source archive, SHA-256: be2738c8a2beb55ac484d71c32"
+      },
+      {
+        "value": "be2738c8a2beb55ac484d71c329381f3caabac80664283ad9a24dbab82b5b590",
+        "defanged": "be2738c8a2beb55ac484d71c329381f3caabac80664283ad9a24dbab82b5b590",
+        "context": "e40b8b1067f4dae70a6ef75da8 - p2pwn source archive, SHA-256: be2738c8a2beb55ac484d71c329381f3caabac80664283ad9a24dbab82b5b590 Attack methodology (three exploitation paths): 1. Brute-fo"
+      }
+    ],
+    "cve": [
+      {
+        "value": "CVE-2021-33044",
+        "defanged": "CVE-2021-33044",
+        "context": "12,324 unique IPs via credential spraying on port 37777. 2. CVE-2021-33044 (NetKeyboard bypass): bypasses authentication by spoofing h"
+      },
+      {
+        "value": "CVE-2021-33045",
+        "defanged": "CVE-2021-33045",
+        "context": "authentication by spoofing hardware controller identity. 3. CVE-2021-33045 (Loopback spoof): abuses source-address parsing to claim 12"
+      },
+      {
+        "value": "CVE-2024-39943",
+        "defanged": "CVE-2024-39943",
+        "context": "C:\\Users\\SystemX\\Downloads\\seria === NOTABLE FINDING === \"CVE-2024-39943 is the label p2pwn attaches to its persistent-backdoor tech"
+      }
+    ],
+    "ipv4": [
+      {
+        "value": "154.86.119.60",
+        "defanged": "154[.]86[.]119[.]60",
+        "context": "tion paths, discovered via an exposed operator directory at 154.86.119.60. Campaign designated \"Operation CameraSwarm\". === INDICATO"
+      },
+      {
+        "value": "185.132.53.56",
+        "defanged": "185[.]132[.]53[.]56",
+        "context": "4.86.119.60 (AS197574, Amsterdam) - Secondary payload host: 185.132.53.56 - Abused legitimate service: easy4ipcloud.com:8800 (Dahua P"
+      }
+    ],
+    "win_path": [
+      {
+        "value": "C:\\Users\\SystemX\\Downloads\\seria",
+        "defanged": "C:\\Users\\SystemX\\Downloads\\seria",
+        "context": "ENT MACHINE === Windows path artifact (leaked in test log): C:\\Users\\SystemX\\Downloads\\seria === NOTABLE FINDING === \"CVE-2024-39943 is the label p2pwn"
+      }
+    ],
+    "domain": [
+      {
+        "value": "easy4ipcloud.com",
+        "defanged": "easy4ipcloud[.]com",
+        "context": "ry payload host: 185.132.53.56 - Abused legitimate service: easy4ipcloud.com:8800 (Dahua P2P relay) - Serial enumeration sources: dahuad"
+      },
+      {
+        "value": "dahuaddns.com",
+        "defanged": "dahuaddns[.]com",
+        "context": "ud.com:8800 (Dahua P2P relay) - Serial enumeration sources: dahuaddns.com , quickddns.com - Exfiltration channel: Telegram Bot API +"
+      },
+      {
+        "value": "quickddns.com",
+        "defanged": "quickddns[.]com",
+        "context": "ua P2P relay) - Serial enumeration sources: dahuaddns.com , quickddns.com - Exfiltration channel: Telegram Bot API + VKontakte commun"
+      }
+    ]
+  },
+  "partial_hashes": [],
+  "malware": [
+    {
+      "name": "SalatStealer",
+      "type": "infostealer",
+      "evidence": "\"Windows stealer binary (SalatStealer)\"; UPX-packed 32-bit; SHA256 de03a0ae...",
+      "confidence": 0.9
+    },
+    {
+      "name": "p2pwn",
+      "type": "backdoor/toolkit",
+      "evidence": "\"p2pwn backdoor account\"; Go ELF + source archive; installs p2pwn/p2password account",
+      "confidence": 0.9
+    }
+  ],
+  "tools": [
+    {
+      "name": "asleep_scanner",
+      "role": "brute-force engine (asyncio)",
+      "author": "d34db33f-1007"
+    },
+    {
+      "name": "CCTV-Scanner",
+      "role": "camera fingerprinting",
+      "author": "ipxobd"
+    },
+    {
+      "name": "add-defender-exclusions.ps1",
+      "role": "Windows Defender evasion (5 methods)"
+    }
+  ],
+  "threat_actors": [
+    {
+      "name": "Operation CameraSwarm operator (unnamed)",
+      "confidence": 0.5
+    }
+  ],
+  "upstream_tool_authors": [
+    "d34db33f-1007",
+    "thebadinteger",
+    "ipxobd",
+    "khoanguyen-3fc",
+    "MaximilianoFelice",
+    "itres-labs",
+    "0x5477"
+  ],
+  "host_iocs": {
+    "backdoor_account": "p2pwn / p2password",
+    "backdoor_install_vector": "RPC on 1,923 cameras",
+    "windows_dev_path": "C:\\Users\\SystemX\\Downloads\\seria",
+    "defender_evasion_script": "add-defender-exclusions.ps1",
+    "port": "37777/TCP",
+    "exfil": [
+      "Telegram Bot API",
+      "VKontakte community wall-163997495"
+    ]
+  },
+  "enrichment": {
+    "mitre_actors": [
+      {
+        "query": "Operation CameraSwarm operator",
+        "matched": false,
+        "suggestions": []
+      },
+      {
+        "query": "d34db33f-1007",
+        "matched": false,
+        "suggestions": []
+      },
+      {
+        "query": "thebadinteger",
+        "matched": false,
+        "suggestions": []
+      },
+      {
+        "query": "ipxobd",
+        "matched": false,
+        "suggestions": []
+      }
+    ],
+    "invalid_technique_ids": [],
+    "virustotal": {
+      "skipped": true,
+      "reason": "VT_API_KEY not set",
+      "hashes_seen": 3
+    }
+  },
+  "analyst_notes": [
+    "CVE-2024-39943 is MISLABELED by the p2pwn tool: the report states it 'belongs to an unrelated command-injection flaw in Rejetto HTTP File Server', NOT the camera backdoor. Excluded from actionable CVEs; kept as a note.",
+    "Actual exploited CVEs: CVE-2021-33044 and CVE-2021-33045 (Dahua auth bypass).",
+    "127.0.0.1 dropped from IPv4 IOCs - it is the spoofed loopback origin in CVE-2021-33045, not an indicator.",
+    "VirusTotal SKIPPED: VT_API_KEY not set. 3 FULL SHA256 hashes are queued and ready - set VT_API_KEY (optionally VT_TIER=premium) and re-run vt_enrich.py to populate live verdicts.",
+    "Attribution is LOW: unnamed operator; the credited GitHub handles are upstream tool authors, not the confirmed operator, and none map to a MITRE ATT&CK group.",
+    "Article cites T1113 Screen Capture; T1125 Video Capture added as the better fit for IP-camera feeds (both validated).",
+    "All 14 mapped technique IDs validated against the ATT&CK enterprise dataset."
+  ]
+}

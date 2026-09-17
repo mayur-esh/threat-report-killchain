@@ -1,0 +1,316 @@
+{
+  "type": "bundle",
+  "id": "bundle--58e6be6d-30e6-4c96-a70f-863eac45c785",
+  "objects": [
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d5270710-6428-4f74-ae69-d400eaa50ce7",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "sha256: de03a0ae5c7aa0c237ae36a649875f986fd9701ac06857dd214054367ce5090c",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T20:55:46.000Z",
+      "pattern": "[file:hashes.'SHA-256' = 'de03a0ae5c7aa0c237ae36a649875f986fd9701ac06857dd214054367ce5090c']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a47e4fa8-e8e0-47b0-9272-56b3d4d9b07c",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "sha256: 694bfbe44bcd9b4844e15294be74dafe86ff8ae40b8b1067f4dae70a6ef75da8",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T20:55:46.000Z",
+      "pattern": "[file:hashes.'SHA-256' = '694bfbe44bcd9b4844e15294be74dafe86ff8ae40b8b1067f4dae70a6ef75da8']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7b229e6b-eff5-4b16-81b1-dd04e220b51b",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "sha256: be2738c8a2beb55ac484d71c329381f3caabac80664283ad9a24dbab82b5b590",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T20:55:46.000Z",
+      "pattern": "[file:hashes.'SHA-256' = 'be2738c8a2beb55ac484d71c329381f3caabac80664283ad9a24dbab82b5b590']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--cc2bf2f5-a0fc-4bcf-adf9-8d9b893b4963",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "ipv4: 154.86.119.60",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T20:55:46.000Z",
+      "pattern": "[ipv4-addr:value = '154.86.119.60']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--de494128-3cb7-4282-8cff-07bd8e289196",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "ipv4: 185.132.53.56",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T20:55:46.000Z",
+      "pattern": "[ipv4-addr:value = '185.132.53.56']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--718d3f8d-9a05-441e-875a-4dc65d5ee061",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "domain: easy4ipcloud.com",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T20:55:46.000Z",
+      "pattern": "[domain-name:value = 'easy4ipcloud.com']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d86c2790-6364-4c0f-9c24-84ee221f0219",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "domain: dahuaddns.com",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T20:55:46.000Z",
+      "pattern": "[domain-name:value = 'dahuaddns.com']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b4a2a91d-1586-4f60-9aea-34bef2267f3f",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "domain: quickddns.com",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T20:55:46.000Z",
+      "pattern": "[domain-name:value = 'quickddns.com']"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--3efbadc1-db4c-420f-811f-edcde7143983",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "SalatStealer",
+      "is_family": true
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--1eaa7355-f242-40a7-b18d-725c2339fd12",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "p2pwn",
+      "is_family": true
+    },
+    {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--462a2d14-f512-4fc3-984f-006d34f1bd94",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Operation CameraSwarm operator (unnamed)"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--8d7941cb-80d4-4ab0-b5c6-b859df48aa34",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Active Scanning: Scanning IP Blocks",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1595.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--0cabb5a3-3ad4-4134-81e3-68bf54fadc2b",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Search Open Technical Databases: Scan Databases",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1596.005"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--bc5e1d78-a70e-4a4a-b150-b1214300b0a8",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Obtain Capabilities: Tool",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1588.002"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--872beae7-0ecd-4ce2-b1d4-c49c46a1fbcc",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Stage Capabilities: Upload Malware",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1608.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--a6417a95-f69e-4114-8098-58d09774cbbd",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Exploit Public-Facing Application",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1190"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--684d5cea-94eb-4e00-bf2e-08eac15cc9fe",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Brute Force: Password Spraying",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1110.003"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--160dc8cf-3635-4fd1-9c90-2cad128a62ca",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Protocol Tunneling",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1572"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--93205a4b-224b-4148-be9d-805023339b96",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Create Account: Local Account",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1136.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--5fa0405f-7930-4dd5-a9bb-841ff7f2819b",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Valid Accounts: Default Accounts",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--12294490-469b-4973-a373-d0607edc30e5",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Video Capture",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1125"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--79b4c447-df75-4187-8ea7-b91533a415c0",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Screen Capture",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1113"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--bf3bb696-7597-47fa-9c79-3e41feab4b51",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Obfuscated Files or Information: Software Packing",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.002"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--00ad2ebc-ae32-48ba-b876-70f907b02180",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Impair Defenses: Disable or Modify Tools",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1562.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--f362b601-dfd2-41c0-9a18-4a4cd6e669b0",
+      "created": "2026-09-03T20:55:46.000Z",
+      "modified": "2026-09-03T20:55:46.000Z",
+      "name": "Exfiltration Over Web Service: Exfiltration Over Webhook",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1567.004"
+        }
+      ]
+    }
+  ]
+}
