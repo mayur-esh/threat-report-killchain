@@ -1,0 +1,28 @@
+type,value,defanged,context,enrichment_verdict,confidence
+ipv4,45.95.147.178,45[.]95[.]147[.]178,INDICATORS OF COMPROMISE === Infrastructure: - Primary C2: 45.95.147.178 (AS4987,,High
+ipv4,45.234.176.202,45[.]234[.]176[.]202,"95.147.178 (AS49870, Alsycon B.V., Netherlands) - Prior C2: 45.234.176.202 (Janu",,High
+ipv4,160.119.76.250,160[.]119[.]76[.]250,176.202 (January 2026 encystPHP campaign) - Scanner Origin: 160.119.76.250 (AS49,,High
+ipv4,169.150.218.33,169[.]150[.]218[.]33,"canner Origin: 160.119.76.250 (AS49870) - Operator VPN IPs: 169.150.218.33, 169.",,High
+ipv4,169.150.218.37,169[.]150[.]218[.]37,"60.119.76.250 (AS49870) - Operator VPN IPs: 169.150.218.33, 169.150.218.37 (Data",,High
+md5,bfcedbc1831779921a0ee2cfaee004f2,bfcedbc1831779921a0ee2cfaee004f2,256 prefix 71d94479 - JOMANGY early variant auth hash - MD5 bfcedbc1831779921a0e,"n/a (VT skipped, no key)",High
+md5,a8b65af6c142736ccf80420e44df240f,a8b65af6c142736ccf80420e44df240f,h - MD5 bfcedbc1831779921a0ee2cfaee004f2 - ___zen.php - MD5 a8b65af6c142736ccf80,"n/a (VT skipped, no key)",High
+md5,ec4ca4db5ec0b782e51224fa7082ac06,ec4ca4db5ec0b782e51224fa7082ac06,0f - Shared sync/auth token (___ask.php / ___md5.php) - MD5 ec4ca4db5ec0b782e512,"n/a (VT skipped, no key)",High
+md5,b92c65af386ed772972b43cab0d55a4a,b92c65af386ed772972b43cab0d55a4a,5ec0b782e51224fa7082ac06 - ZenharR auth hash (wr.php) - MD5 b92c65af386ed772972b,"n/a (VT skipped, no key)",High
+md5,cf710203400b8c466e6dfcafcf36a411,cf710203400b8c466e6dfcafcf36a411,86ed772972b43cab0d55a4a - ZenharR auth hash (wor.php) - MD5 cf710203400b8c466e6d,"n/a (VT skipped, no key)",High
+sha1,6ea9c6d2d932532a4cd44c7974fb1a0a87dbfcf9,6ea9c6d2d932532a4cd44c7974fb1a0a87dbfcf9,ers FreePBX web panel account (MySQL ampusers table) - SHA1 6ea9c6d2d932532a4cd4,"n/a (VT skipped, no key)",High
+sha256_prefix,b506fc82,b506fc82,Stage 1 bash dropper,partial hash - source-truncated,High
+sha256_prefix,100259af,100259af,k.php (JOMANGY deployer),partial hash - source-truncated,High
+sha256_prefix,49abb105,49abb105,k.php rotated variant,partial hash - source-truncated,High
+sha256_prefix,d40180f7,d40180f7,wr.php (ZenharR dropper),partial hash - source-truncated,High
+sha256_prefix,995e6304,995e6304,wor.php (secondary ZenharR),partial hash - source-truncated,High
+sha256_prefix,039d648b,039d648b,JOMANGY early variant,partial hash - source-truncated,High
+sha256_prefix,71d94479,71d94479,encystPHP prior dropper (Jan 2026),partial hash - source-truncated,High
+cve,CVE-2025-64328,CVE-2025-64328,NARRATIVE === Initial Access (entry vector candidates): - CVE-2025-64328: FreePB,,High
+cve,CVE-2025-57819,CVE-2025-57819,17.0.3. Prior campaign vector; Shadowserver attribution. - CVE-2025-57819: FreeP,,High
+cve,CVE-2021-45461,CVE-2021-45461,"ed simultaneously. 8. Logs scrubbed for ""restapps"" strings (CVE-2021-45461 legac",,Context/historical
+cve,CVE-2019-19006,CVE-2019-19006,78 and shared password hash. - Check Point Research (2020): CVE-2019-19006 campa,,Context/historical
+malware,JOMANGY,JOMANGY,"""deploying JOMANGY - a previously undocumented PHP webshell family""",webshell,High
+malware,ZenharR,ZenharR,"""alongside ZenharR""; wr.php/wor.php deploy ZenharR",webshell,High
+malware,encystPHP,encystPHP,"""Prior encystPHP dropper (Jan 2026)""; Fortinet Jan 2026",dropper,High
+malware,VictamPbx,VictamPbx,"""VictamPbx webshell family cleared from all hosts""; marker bm2cjjnRXac1WW3KT7k6M",webshell,Medium
+threat-actor,INJ3CTOR3,INJ3CTOR3,aliases: INJ3CTOR3S,no MITRE G-ID,Medium

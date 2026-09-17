@@ -1,0 +1,423 @@
+{
+  "type": "bundle",
+  "id": "bundle--23ee62d2-843a-4955-80e8-94ac52f4cc0b",
+  "objects": [
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--85d34250-3b16-478a-a531-f414a4af0d89",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "sha1: 6ea9c6d2d932532a4cd44c7974fb1a0a87dbfcf9",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[file:hashes.'SHA-1' = '6ea9c6d2d932532a4cd44c7974fb1a0a87dbfcf9']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8e44e1d3-78a9-4c87-82eb-d069ddb77876",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "md5: bfcedbc1831779921a0ee2cfaee004f2",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[file:hashes.MD5 = 'bfcedbc1831779921a0ee2cfaee004f2']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0c944455-446e-4100-89c1-637f50279156",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "md5: a8b65af6c142736ccf80420e44df240f",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[file:hashes.MD5 = 'a8b65af6c142736ccf80420e44df240f']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--003357e4-9253-489e-9193-98bcf3c3322d",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "md5: ec4ca4db5ec0b782e51224fa7082ac06",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[file:hashes.MD5 = 'ec4ca4db5ec0b782e51224fa7082ac06']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--47738328-bd00-4c2e-bc4f-25392a02839d",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "md5: b92c65af386ed772972b43cab0d55a4a",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[file:hashes.MD5 = 'b92c65af386ed772972b43cab0d55a4a']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--52b023d7-4199-4940-aadd-a916c4d75fde",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "md5: cf710203400b8c466e6dfcafcf36a411",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[file:hashes.MD5 = 'cf710203400b8c466e6dfcafcf36a411']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2b658536-f81c-42c3-90e3-7ca48013cb48",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "ipv4: 45.95.147.178",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[ipv4-addr:value = '45.95.147.178']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--92053b90-d3bb-4e92-bc37-7bfd2746791a",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "ipv4: 45.234.176.202",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[ipv4-addr:value = '45.234.176.202']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f74baae1-b2a5-4299-953b-d7833e6f83b0",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "ipv4: 160.119.76.250",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[ipv4-addr:value = '160.119.76.250']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--50c9c403-2284-4717-be96-9481460d0a39",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "ipv4: 169.150.218.33",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[ipv4-addr:value = '169.150.218.33']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e87635bc-8fc8-476a-a969-6400435bb01c",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "ipv4: 169.150.218.37",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-03T19:13:57.000Z",
+      "pattern": "[ipv4-addr:value = '169.150.218.37']"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--d648bc76-94b9-4523-97ff-31f07c7d1b55",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "JOMANGY",
+      "is_family": true
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--e6e00fcf-d557-428b-ad86-dab5ee80899a",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "ZenharR",
+      "is_family": true
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--6ee6d454-8a05-4671-b2aa-f3718b87ee2a",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "encystPHP",
+      "is_family": true
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--aff33a67-5d7b-439d-a310-e18920b0de86",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "VictamPbx",
+      "is_family": true
+    },
+    {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--d8e59820-1fb0-47da-98e3-4b6993099285",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "INJ3CTOR3"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--4b891765-f807-46c5-9e73-e56d9f853558",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Exploit Public-Facing Application",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1190"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--a0e89708-5ede-4639-b43d-99435d049d03",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Command and Scripting Interpreter: Unix Shell",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1059.004"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--632f7b78-c3eb-4527-83b7-9816915dab72",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Server Software Component: Web Shell",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1505.003"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--4f3ce39f-bdd4-4788-bd8b-c4e3bfc0467d",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Scheduled Task/Job: Cron",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1053.003"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--8f806439-767d-47bc-a186-a3495f13be8f",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Event Triggered Execution: Unix Shell Configuration Modification",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1546.004"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--089a6a6a-6e2d-4718-9880-82ffff81b4f3",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Boot or Logon Initialization Scripts: RC Scripts",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1037.004"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--92865a52-da27-4521-bf90-0f087b073156",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Create Account: Local Account",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1136.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--9dcacd33-c854-400d-955d-6e79b5c39bf8",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Account Manipulation",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1098"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--9572deb4-802f-458c-ba13-cbc21f07bdc4",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Valid Accounts: Local Accounts",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.003"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--29a89626-e3d8-4c4a-a113-2cc436933720",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Obfuscated Files or Information: Command Obfuscation",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.010"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--32a9ab4f-5d3a-4ab1-9287-bf2cdb0b7597",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Deobfuscate/Decode Files or Information",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1140"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--01274d26-738b-4e7a-9902-2cd5c158bde2",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Impair Defenses: Disable or Modify System Firewall",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1562.004"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--521dc907-cbef-433c-a2aa-a3abefdfc6bf",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Indicator Removal: Clear Linux or Mac System Logs",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1070.002"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--355ff351-d6ff-48c1-b956-826890ab8c60",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "File and Directory Permissions Modification: Linux and Mac",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1222.002"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--abdb694e-2506-440c-8da8-9042b5db53fe",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Masquerading: Match Legitimate Name or Location",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--19694c08-4596-485f-95a7-bc42fca842c2",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Application Layer Protocol: Web Protocols",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1071.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--a86c269a-434b-459c-ab0b-d309ec462101",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Ingress Tool Transfer",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1105"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--409b429e-bfac-4500-9167-46f3e2c81ca5",
+      "created": "2026-09-03T19:13:57.000Z",
+      "modified": "2026-09-03T19:13:57.000Z",
+      "name": "Financial Theft",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1657"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,594 @@
+{
+  "report_title": "JOMANGY: INJ3CTOR3's Self-Healing FreePBX Toll Fraud Campaign",
+  "source": "https://cyble.com/blog/jomangy-inj3ctor3s-self-healing-freepbx-toll-fraud-campaign/",
+  "provider": "Cyble Research & Intelligence Labs (CRIL)",
+  "generated_utc": "2026-09-03T19:13:57.669236Z",
+  "confidence_rubric": {
+    "High": "0.85-1.0 stated w/ specifics",
+    "Medium": "0.5-0.84 strong inference",
+    "Low": "0.15-0.49 weak/ambiguous",
+    "Speculative": "<0.15 hypothesis"
+  },
+  "technique_mappings": [
+    {
+      "behavior": "Exploit FreePBX Endpoint/filestore module to gain code execution on internet-facing PBX",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "framework": "ATT&CK",
+      "kill_chain": "Exploitation",
+      "evidence": "\"Initial exploit gains code execution\"; candidate CVE-2025-57819 (pre-auth SQLi) / CVE-2025-64328 (post-auth RCE)",
+      "rationale": "Entry is direct exploitation of a public-facing FreePBX web application.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Stage-1 bash dropper and asterisk CLI commands executed on host",
+      "technique_id": "T1059.004",
+      "technique_name": "Command and Scripting Interpreter: Unix Shell",
+      "framework": "ATT&CK",
+      "kill_chain": "Execution",
+      "evidence": "\"Stage 1 dropper downloaded and executed\"; webshell runs asterisk -rx \"channel originate ...\"",
+      "rationale": "Bash dropper + shell-invoked asterisk commands are Unix shell execution.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Deploy JOMANGY and ZenharR PHP webshells to 12+ web-root paths",
+      "technique_id": "T1505.003",
+      "technique_name": "Server Software Component: Web Shell",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"deploying JOMANGY - a previously undocumented PHP webshell family - alongside ZenharR\"; paths under /var/www/html/",
+      "rationale": "PHP webshells implanted in the FreePBX web root for persistent access.",
+      "confidence": "High",
+      "score": 0.95
+    },
+    {
+      "behavior": "Cron jobs poll C2 for k.php every 1-3 minutes; restore + watchdog cron entries",
+      "technique_id": "T1053.003",
+      "technique_name": "Scheduled Task/Job: Cron",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"Downloads http://45.95.147.178/k.php every 1-3 minutes\"; hourly + per-minute restore cron; watchdog cron for zen2/devnull2",
+      "rationale": "Cron is the primary re-deployment and self-heal engine.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Base64 stager appended to /root/.bash_profile and /root/.bashrc",
+      "technique_id": "T1546.004",
+      "technique_name": "Event Triggered Execution: Unix Shell Configuration Modification",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"Base64-encoded stager appended to /root/.bash_profile, /root/.bashrc\"; \"Executes on every root login\"",
+      "rationale": "Shell rc-file injection executes on interactive root login.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Base64 stager appended to /etc/rc.local for boot execution",
+      "technique_id": "T1037.004",
+      "technique_name": "Boot or Logon Initialization Scripts: RC Scripts",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"...appended to ... /etc/rc.local\"; \"executes on ... system reboot\"",
+      "rationale": "rc.local runs the stager at boot, independent of cron.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Create 18 backdoor OS accounts across three privilege tiers (incl. UID-0)",
+      "technique_id": "T1136.001",
+      "technique_name": "Create Account: Local Account",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"18 backdoor accounts created across three privilege tiers\"; UID-0: newfpbxs, newfpbx, xhimax...",
+      "rationale": "New local accounts, several root-equivalent, provide durable access.",
+      "confidence": "High",
+      "score": 0.95
+    },
+    {
+      "behavior": "Modify root password and implant shared credential hashes; insert FreePBX ampusers row",
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"Credential implantation includes root password modification\"; MySQL ampusers insert (freepbxusers)",
+      "rationale": "Altering existing credentials + web-panel account is account manipulation.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Use implanted UID-0/service accounts for continued access",
+      "technique_id": "T1078.003",
+      "technique_name": "Valid Accounts: Local Accounts",
+      "framework": "ATT&CK",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "UID-0 accounts (admin, support, centos...) + service accounts (asterisk, freepbxuser...)",
+      "rationale": "Backdoor local accounts are reused as valid credentials for re-entry.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Base64 + ROT13 encode payloads; dead-code blocks; base64 in cron variables",
+      "technique_id": "T1027.010",
+      "technique_name": "Obfuscated Files or Information: Command Obfuscation",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"JOMANGY uses base64 + ROT13 before eval()\"; dead-code if(false){...'deadcode_anti_av'}; base64 cron vars",
+      "rationale": "Layered encoding + junk code hides commands from AV/analysts.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Decode base64/ROT13 payload at runtime before eval()",
+      "technique_id": "T1140",
+      "technique_name": "Deobfuscate/Decode Files or Information",
+      "framework": "ATT&CK",
+      "kill_chain": "Execution",
+      "evidence": "\"base64 + ROT13 before eval()\"",
+      "rationale": "Runtime decode is the paired deobfuscation step.",
+      "confidence": "Medium",
+      "score": 0.65
+    },
+    {
+      "behavior": "Block 11 competitor C2 IPs via iptables",
+      "technique_id": "T1562.004",
+      "technique_name": "Impair Defenses: Disable or Modify System Firewall",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"11 competitor C2 IPs blocked via iptables\"",
+      "rationale": "iptables rules are added to deny rivals (defensive turf control).",
+      "confidence": "Medium",
+      "score": 0.7
+    },
+    {
+      "behavior": "Scrub Apache logs of 'restapps' strings with sed",
+      "technique_id": "T1070.002",
+      "technique_name": "Indicator Removal: Clear Linux or Mac System Logs",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"Apache log scrubbing: sed -i '/restapps/d'\"",
+      "rationale": "Selective log-line deletion removes exploitation evidence.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Set chattr +i immutability on webshell + crontab backup copies",
+      "technique_id": "T1222.002",
+      "technique_name": "File and Directory Permissions Modification: Linux and Mac",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"8 immutable (chattr +i) backup copies\"; \"chattr +i flag prevents deletion even by root\"",
+      "rationale": "Immutable attribute resists deletion, hardening persistence.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Stage payloads in system-mimicking hidden dirs (/dev/shm/.systemd/, /tmp/.cache/)",
+      "technique_id": "T1036.005",
+      "technique_name": "Masquerading: Match Legitimate Name or Location",
+      "framework": "ATT&CK",
+      "kill_chain": "Installation",
+      "evidence": "\"System-mimicking directory names to evade detection\"; /dev/shm/.systemd/, /tmp/.cache/",
+      "rationale": "Legit-looking paths blend malicious files into the OS.",
+      "confidence": "High",
+      "score": 0.8
+    },
+    {
+      "behavior": "HTTP(S) polling and command retrieval from C2 web paths",
+      "technique_id": "T1071.001",
+      "technique_name": "Application Layer Protocol: Web Protocols",
+      "framework": "ATT&CK",
+      "kill_chain": "Command & Control",
+      "evidence": "C2 45.95.147.178 over HTTP; paths /k.php, /z/wr.php, /z/post/root.php; ___ask.php/___md5.php sync",
+      "rationale": "C2 uses HTTP web requests to a static-file server.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Repeatedly download k.php/wr.php payloads from C2",
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "framework": "ATT&CK",
+      "kill_chain": "Command & Control",
+      "evidence": "\"Re-downloads and re-executes k.php\"; dual-track k.php + wr.php download",
+      "rationale": "Payloads are pulled from C2 onto the host on a schedule.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Originate fraudulent calls over victim SIP trunks for revenue",
+      "technique_id": "T1657",
+      "technique_name": "Financial Theft",
+      "framework": "ATT&CK",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "asterisk -rx \"channel originate Local/<num>@<context> ...\"; \"victim receives carrier bill\"",
+      "rationale": "VoIP toll fraud monetizes access at the victim's financial expense.",
+      "confidence": "High",
+      "score": 0.9
+    }
+  ],
+  "atlas_mappings": [],
+  "atlas_note": "No MITRE ATLAS techniques apply: this campaign targets VoIP/PBX infrastructure, not AI/ML systems.",
+  "kill_chain": {
+    "Reconnaissance": [
+      {
+        "behavior": "Mass automated scanning for exploitable FreePBX instances",
+        "evidence": "Scanner origin 160.119.76.250; people2.txt inventory of 3,080 IPs 'assessed as scanner output'",
+        "technique": "(external scanning; T1595 inferred)",
+        "confidence": "Medium",
+        "score": 0.55
+      }
+    ],
+    "Weaponization": [
+      {
+        "behavior": "Package JOMANGY/ZenharR webshells + staged bash dropper with layered obfuscation",
+        "evidence": "Double-layer base64+ROT13; dead-code anti-AV",
+        "technique": "T1027.010",
+        "confidence": "Medium",
+        "score": 0.6
+      }
+    ],
+    "Delivery": [
+      {
+        "behavior": "Deliver exploit to public-facing FreePBX web app",
+        "evidence": "CVE-2025-57819 pre-auth SQLi / CVE-2025-64328 post-auth RCE",
+        "technique": "T1190",
+        "confidence": "High",
+        "score": 0.85
+      }
+    ],
+    "Exploitation": [
+      {
+        "behavior": "Gain code execution via the FreePBX vulnerability",
+        "evidence": "\"Initial exploit gains code execution\"",
+        "technique": "T1190 / T1059.004",
+        "confidence": "High",
+        "score": 0.9
+      }
+    ],
+    "Installation": [
+      {
+        "behavior": "Six-channel persistence: webshells, cron, rc-file/rc.local, accounts, chattr +i backups, HA license.php hook",
+        "evidence": "\"Six persistence channels installed simultaneously\"",
+        "technique": "T1505.003, T1053.003, T1546.004, T1037.004, T1136.001, T1222.002",
+        "confidence": "High",
+        "score": 0.95
+      }
+    ],
+    "Command & Control": [
+      {
+        "behavior": "HTTP polling to C2 45.95.147.178; credential sync via ___ask.php/___md5.php",
+        "evidence": "\"Downloads http://45.95.147.178/k.php\"; static text-file C2",
+        "technique": "T1071.001, T1105",
+        "confidence": "High",
+        "score": 0.9
+      }
+    ],
+    "Actions on Objectives": [
+      {
+        "behavior": "VoIP toll fraud via originate over victim SIP trunks",
+        "evidence": "asterisk -rx channel originate; \"victim receives carrier bill\"",
+        "technique": "T1657",
+        "confidence": "High",
+        "score": 0.9
+      }
+    ]
+  },
+  "diamond_model": {
+    "adversary": {
+      "value": "INJ3CTOR3 (aka INJ3CTOR3S) - long-running VoIP/PBX toll-fraud crew, active since >=2019",
+      "evidence": "\"attributed to INJ3CTOR3\"; six overlapping artifacts incl. marker bm2cjjnRXac1WW3KT7k6MKTR, newfpbx UID-0 account, prior C2 in blocklist",
+      "confidence": "Medium",
+      "score": 0.7,
+      "note": "Vendor-tracked crew; NOT a MITRE ATT&CK-numbered group (no G-ID)."
+    },
+    "capability": {
+      "value": "JOMANGY & ZenharR PHP webshells; staged bash dropper; encystPHP (prior); VictamPbx (prior); license.php PHP executor; base64+ROT13 obfuscation",
+      "evidence": "IOC hashes; watermark trace_e1ebf9066a951be519a24140711839ea",
+      "confidence": "High",
+      "score": 0.9
+    },
+    "infrastructure": {
+      "value": "C2 45.95.147.178 (Alsycon B.V., NL); prior C2 45.234.176.202 (BR); scanner 160.119.76.250; operator VPN 169.150.218.33/.37 (Datapacket)",
+      "evidence": "IOC infrastructure list; C2 migration BR->NL",
+      "confidence": "High",
+      "score": 0.9
+    },
+    "victim": {
+      "value": "Internet-facing FreePBX/Asterisk VoIP servers globally (900+ tracked; 700+ still infected)",
+      "evidence": "Shadowserver tracking; SIP-trunk toll fraud",
+      "confidence": "High",
+      "score": 0.9
+    },
+    "meta": {
+      "timeframe": "Prior encystPHP Jan 2026 (BR C2); JOMANGY campaign ~Apr-May 2026 (NL C2); lineage since 2019",
+      "attribution_confidence": "Medium (0.7) - strong artifact overlap, vendor attribution, no independent ATT&CK group id"
+    }
+  },
+  "incidents": [
+    {
+      "id": "INC-1",
+      "name": "JOMANGY FreePBX toll-fraud campaign (current, Apr-May 2026)",
+      "confidence": "High",
+      "score": 0.9,
+      "rationale": "Directly documented with named webshells, C2 45.95.147.178, six persistence channels, and toll-fraud mechanism.",
+      "linked_iocs": [
+        "45.95.147.178",
+        "JOMANGY",
+        "ZenharR",
+        "license.php",
+        "people2.txt"
+      ]
+    },
+    {
+      "id": "INC-2",
+      "name": "encystPHP predecessor campaign (Jan 2026)",
+      "confidence": "Medium",
+      "score": 0.75,
+      "rationale": "Same actor per shared marker/accounts, but analyzed here mainly via artifacts left behind and the prior C2 45.234.176.202.",
+      "linked_iocs": [
+        "45.234.176.202",
+        "encystPHP",
+        "bm2cjjnRXac1WW3KT7k6MKTR"
+      ]
+    },
+    {
+      "id": "INC-3",
+      "name": "Historical INJ3CTOR3 lineage (2019-2022)",
+      "confidence": "Low",
+      "score": 0.4,
+      "rationale": "Continuity asserted from Unit42 (2022) ZenharR and Check Point (2020) CVE-2019-19006 work; supporting but not primary evidence in this report.",
+      "linked_iocs": [
+        "ZenharR",
+        "CVE-2019-19006",
+        "VictamPbx"
+      ]
+    }
+  ],
+  "indicators": {
+    "sha1": [
+      {
+        "value": "6ea9c6d2d932532a4cd44c7974fb1a0a87dbfcf9",
+        "defanged": "6ea9c6d2d932532a4cd44c7974fb1a0a87dbfcf9",
+        "context": "ers FreePBX web panel account (MySQL ampusers table) - SHA1 6ea9c6d2d932532a4cd44c7974fb1a0a87dbfcf9 Webshell Identifiers: - JOMANGY watermark: trace_e1ebf9066"
+      }
+    ],
+    "md5": [
+      {
+        "value": "bfcedbc1831779921a0ee2cfaee004f2",
+        "defanged": "bfcedbc1831779921a0ee2cfaee004f2",
+        "context": "256 prefix 71d94479 - JOMANGY early variant auth hash - MD5 bfcedbc1831779921a0ee2cfaee004f2 - ___zen.php - MD5 a8b65af6c142736ccf80420e44df240f - Share"
+      },
+      {
+        "value": "a8b65af6c142736ccf80420e44df240f",
+        "defanged": "a8b65af6c142736ccf80420e44df240f",
+        "context": "h - MD5 bfcedbc1831779921a0ee2cfaee004f2 - ___zen.php - MD5 a8b65af6c142736ccf80420e44df240f - Shared sync/auth token (___ask.php / ___md5.php) - MD5 ec"
+      },
+      {
+        "value": "ec4ca4db5ec0b782e51224fa7082ac06",
+        "defanged": "ec4ca4db5ec0b782e51224fa7082ac06",
+        "context": "0f - Shared sync/auth token (___ask.php / ___md5.php) - MD5 ec4ca4db5ec0b782e51224fa7082ac06 - ZenharR auth hash (wr.php) - MD5 b92c65af386ed772972b43ca"
+      },
+      {
+        "value": "b92c65af386ed772972b43cab0d55a4a",
+        "defanged": "b92c65af386ed772972b43cab0d55a4a",
+        "context": "5ec0b782e51224fa7082ac06 - ZenharR auth hash (wr.php) - MD5 b92c65af386ed772972b43cab0d55a4a - ZenharR auth hash (wor.php) - MD5 cf710203400b8c466e6dfca"
+      },
+      {
+        "value": "cf710203400b8c466e6dfcafcf36a411",
+        "defanged": "cf710203400b8c466e6dfcafcf36a411",
+        "context": "86ed772972b43cab0d55a4a - ZenharR auth hash (wor.php) - MD5 cf710203400b8c466e6dfcafcf36a411 - freepbxusers FreePBX web panel account (MySQL ampusers ta"
+      }
+    ],
+    "cve": [
+      {
+        "value": "CVE-2025-64328",
+        "defanged": "CVE-2025-64328",
+        "context": "NARRATIVE === Initial Access (entry vector candidates): - CVE-2025-64328: FreePBX filestore module post-auth command injection (RCE)"
+      },
+      {
+        "value": "CVE-2025-57819",
+        "defanged": "CVE-2025-57819",
+        "context": "17.0.3. Prior campaign vector; Shadowserver attribution. - CVE-2025-57819: FreePBX Endpoint module pre-auth SQL injection via cron_jo"
+      },
+      {
+        "value": "CVE-2021-45461",
+        "defanged": "CVE-2021-45461",
+        "context": "ed simultaneously. 8. Logs scrubbed for \"restapps\" strings (CVE-2021-45461 legacy behavior). 9. SSH hardened; root login enabled. Per"
+      },
+      {
+        "value": "CVE-2019-19006",
+        "defanged": "CVE-2019-19006",
+        "context": "78 and shared password hash. - Check Point Research (2020): CVE-2019-19006 campaign; eviction targets b3d0r, yokyok. Campaign continu"
+      }
+    ],
+    "ipv4": [
+      {
+        "value": "45.95.147.178",
+        "defanged": "45[.]95[.]147[.]178",
+        "context": "INDICATORS OF COMPROMISE === Infrastructure: - Primary C2: 45.95.147.178 (AS49870, Alsycon B.V., Netherlands) - Prior C2: 45.234.176"
+      },
+      {
+        "value": "45.234.176.202",
+        "defanged": "45[.]234[.]176[.]202",
+        "context": "95.147.178 (AS49870, Alsycon B.V., Netherlands) - Prior C2: 45.234.176.202 (January 2026 encystPHP campaign) - Scanner Origin: 160.119"
+      },
+      {
+        "value": "160.119.76.250",
+        "defanged": "160[.]119[.]76[.]250",
+        "context": "176.202 (January 2026 encystPHP campaign) - Scanner Origin: 160.119.76.250 (AS49870) - Operator VPN IPs: 169.150.218.33, 169.150.218.3"
+      },
+      {
+        "value": "169.150.218.33",
+        "defanged": "169[.]150[.]218[.]33",
+        "context": "canner Origin: 160.119.76.250 (AS49870) - Operator VPN IPs: 169.150.218.33, 169.150.218.37 (Datapacket/AS212238) - C2 Web Paths: /k.ph"
+      },
+      {
+        "value": "169.150.218.37",
+        "defanged": "169[.]150[.]218[.]37",
+        "context": "60.119.76.250 (AS49870) - Operator VPN IPs: 169.150.218.33, 169.150.218.37 (Datapacket/AS212238) - C2 Web Paths: /k.php , /x , /z/wr.p"
+      }
+    ]
+  },
+  "partial_hashes": [
+    {
+      "value": "b506fc82",
+      "type": "sha256_prefix",
+      "role": "Stage 1 bash dropper"
+    },
+    {
+      "value": "100259af",
+      "type": "sha256_prefix",
+      "role": "k.php (JOMANGY deployer)"
+    },
+    {
+      "value": "49abb105",
+      "type": "sha256_prefix",
+      "role": "k.php rotated variant"
+    },
+    {
+      "value": "d40180f7",
+      "type": "sha256_prefix",
+      "role": "wr.php (ZenharR dropper)"
+    },
+    {
+      "value": "995e6304",
+      "type": "sha256_prefix",
+      "role": "wor.php (secondary ZenharR)"
+    },
+    {
+      "value": "039d648b",
+      "type": "sha256_prefix",
+      "role": "JOMANGY early variant"
+    },
+    {
+      "value": "71d94479",
+      "type": "sha256_prefix",
+      "role": "encystPHP prior dropper (Jan 2026)"
+    }
+  ],
+  "malware": [
+    {
+      "name": "JOMANGY",
+      "type": "webshell",
+      "evidence": "\"deploying JOMANGY - a previously undocumented PHP webshell family\"",
+      "confidence": 0.95
+    },
+    {
+      "name": "ZenharR",
+      "type": "webshell",
+      "evidence": "\"alongside ZenharR\"; wr.php/wor.php deploy ZenharR",
+      "confidence": 0.9
+    },
+    {
+      "name": "encystPHP",
+      "type": "dropper",
+      "evidence": "\"Prior encystPHP dropper (Jan 2026)\"; Fortinet Jan 2026",
+      "confidence": 0.85
+    },
+    {
+      "name": "VictamPbx",
+      "type": "webshell",
+      "evidence": "\"VictamPbx webshell family cleared from all hosts\"; marker bm2cjjnRXac1WW3KT7k6MKTR",
+      "confidence": 0.8
+    }
+  ],
+  "threat_actors": [
+    {
+      "name": "INJ3CTOR3",
+      "aliases": [
+        "INJ3CTOR3S"
+      ],
+      "evidence": "\"attributed to INJ3CTOR3\"; named in dropper grep eviction list; six overlapping artifacts",
+      "confidence": 0.8
+    }
+  ],
+  "host_iocs": {
+    "deployed_webshell_paths": [
+      "/var/www/html/admin/views/ajax.php",
+      "/var/www/html/admin/views/some.php",
+      "/var/www/html/h.php",
+      "/var/www/html/rest_phones/ajax.php",
+      "/var/www/html/digium_phones/ajax.php",
+      "/var/www/html/admin/modules/freepbx_ha/license.php",
+      "/var/www/html/admin/modules/h/ajax.php",
+      "/var/www/html/admin/modules/h/config.php",
+      "/var/www/html/admin/modules/h/index.php",
+      "/var/www/html/fpbxphones/",
+      "/var/www/html/phones/"
+    ],
+    "persistence_files": [
+      "/root/.bash_profile",
+      "/root/.bashrc",
+      "/etc/rc.local"
+    ],
+    "immutable_backup_dirs": [
+      "/var/lib/asterisk/bin/",
+      "/dev/shm/.systemd/",
+      "/tmp/.cache/"
+    ],
+    "c2_web_paths": [
+      "/k.php",
+      "/x",
+      "/z/wr.php",
+      "/z/wor.php",
+      "/z/post/root.php",
+      "/z/post/noroot.php",
+      "___ip.php",
+      "___ask.php",
+      "___md5.php",
+      "___zen.php"
+    ],
+    "backdoor_accounts_uid0": [
+      "newfpbxs",
+      "newfpbx",
+      "xhimax",
+      "centos",
+      "admin",
+      "support",
+      "issabel",
+      "sangoma",
+      "emo"
+    ],
+    "backdoor_accounts_service": [
+      "sugarmaint",
+      "spamfilter",
+      "asteriskuser",
+      "supports",
+      "freepbxuser",
+      "supermaint",
+      "asterisk",
+      "hima"
+    ],
+    "freepbx_panel_account": "freepbxusers (ampusers table)",
+    "watchdog_process_names": [
+      "zen2",
+      "devnull2"
+    ]
+  },
+  "enrichment": {
+    "mitre_actors": [
+      {
+        "query": "INJ3CTOR3",
+        "matched": false,
+        "suggestions": []
+      }
+    ],
+    "invalid_technique_ids": [],
+    "virustotal": {
+      "skipped": true,
+      "reason": "VT_API_KEY not set",
+      "hashes_seen": 6
+    }
+  },
+  "analyst_notes": [
+    "Source article prints only 8-char SHA256 PREFIXES for payload files (b506fc82, 100259af, 49abb105, d40180f7, 995e6304, 039d648b, 71d94479) - NOT full SHA256; unusable for VT lookup or precise matching. Full MD5s available only for auth/watermark tokens.",
+    "VirusTotal hash enrichment SKIPPED: VT_API_KEY not set. Report notes article-stated coverage: k.php/wr.php 0 detections; Stage 1 4/76.",
+    "INJ3CTOR3 has no MITRE ATT&CK group (G-ID); actor enrichment correctly returned no match. Treated as vendor-tracked crew.",
+    "All 18 mapped technique IDs validated against ATT&CK enterprise dataset (v cached).",
+    "Windows-only mismaps (e.g., T1547.001 Registry Run Keys) excluded - host is Linux; used T1546.004/T1037.004 instead.",
+    "Extractor domain regex false-positived on .php/.local filenames and vendor site cyble.com; reclassified as file paths / dropped."
+  ]
+}
