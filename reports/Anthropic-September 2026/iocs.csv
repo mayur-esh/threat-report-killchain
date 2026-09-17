@@ -1,0 +1,30 @@
+type,value,defanged,context_or_case,enrichment_verdict,confidence
+domain,ms365-live.com,ms365-live[.]com,GTG-20006,attacker-controlled / impersonation,High
+domain,teams.ms365-live.com,teams[.]ms365-live[.]com,GTG-20006,attacker-controlled / impersonation,High
+domain,policenationale.cc,policenationale[.]cc,GTG-50014,attacker-controlled / impersonation,High
+domain,awstore.cloud,awstore[.]cloud,GTG-50021,attacker-controlled / impersonation,High
+domain,kiro.cheap,kiro[.]cheap,GTG-50021,attacker-controlled / impersonation,High
+domain,sys-tools.cfd,sys-tools[.]cfd,GTG-50021,attacker-controlled / impersonation,High
+domain,aws-us-east-3.com,aws-us-east-3[.]com,GTG-50021,attacker-controlled / impersonation,High
+domain,holdboost.store,holdboost[.]store,GTG-50021,attacker-controlled / impersonation,High
+domain,deltaclient.xyz,deltaclient[.]xyz,GTG-50021,attacker-controlled / impersonation,High
+malware,PowerChrome,PowerChrome,GTG-20006,malware (Windows),High
+malware,WUEngine,WUEngine,GTG-20006,malware (Windows),High
+malware,Shadow C2,Shadow C2,GTG-20006,C2 framework (Windows),High
+malware,MiniPlasma,MiniPlasma,GTG-20006,malware (Windows),High
+malware,CloudSyncSvc,CloudSyncSvc,GTG-20006,malware (Windows),High
+malware,GiftDrop,GiftDrop,GTG-20006,malware (Android),High
+malware,DarkSword,DarkSword,GTG-20006,malware (iOS),High
+tool,PentAGI,PentAGI,GTG-50020,open-source offensive agent framework,Medium
+tool,TruffleHog,TruffleHog,GTG-50014,credential scanning,Medium
+tool,WPPConnect,WPPConnect,GTG-20006,"WhatsApp automation library, used for account takeover",Medium
+tool,LiteLLM,LiteLLM,GTG-50020 (local model gateway front),LLM wrapper/gateway service,Medium
+tool,BeEF,BeEF,GTG-50029,browser exploitation framework / C2,Medium
+tool,Soraki,Soraki,GTG-50014,breach-dataset aggregation platform (Telegram Mini App),Medium
+tool,fafsearch,fafsearch,GTG-50029,compiled breach-dump search engine built by the operator,Medium
+threat-actor,ShinyHunters,ShinyHunters,"""GTG-50014: ShinyHunters Affiliate Credential-Harvesting Collective""",MITRE G1057 (UNC6240/Bling Libra),High
+threat-actor,GTG-20006,GTG-20006,"Anthropic-internal designation, Russian state-nexus espionage actor",no MITRE G-ID (internal case designation),Low
+threat-actor,GTG-10007,GTG-10007,"Anthropic-internal designation, Chinese-speaking exploit-development operators (",no MITRE G-ID (internal case designation),Low
+threat-actor,GTG-50020,GTG-50020,"Anthropic-internal designation, Russian financial cybercriminal targeting AI ven",no MITRE G-ID (internal case designation),Low
+threat-actor,GTG-50029,GTG-50029,"Anthropic-internal designation, single French-speaking hacktivist operator",no MITRE G-ID (internal case designation),Low
+threat-actor,GTG-50021,GTG-50021,"Anthropic-internal designation, fraudulent Claude reseller operation",no MITRE G-ID (internal case designation),Low

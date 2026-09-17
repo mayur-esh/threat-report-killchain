@@ -1,0 +1,868 @@
+{
+  "report_title": "Detecting and countering misuse of AI: September 2026",
+  "source": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+  "provider": "Anthropic (Threat Intelligence team)",
+  "related_pdf": "https://www-cdn.anthropic.com/e50be2e51e7695dc4b1366a37a245a597377d3b5/Anthropic-Detecting-and-countering-091026.pdf",
+  "related_ioc_csv": "https://www-cdn.anthropic.com/b5af8acd5ee681422114af7c7b6b02c1ecd074ca/20260910_Anthropic_AI_Misuse_Report_IOCs.csv",
+  "generated_utc": "2026-09-11T22:51:34.177154Z",
+  "confidence_rubric": {
+    "High": "0.85-1.0 stated w/ specifics",
+    "Medium": "0.5-0.84 strong inference",
+    "Low": "0.15-0.49 weak/ambiguous",
+    "Speculative": "<0.15 hypothesis"
+  },
+  "technique_mappings": [
+    {
+      "behavior": "Fingerprint email/remote-access systems, harvest public info for phishing lists",
+      "technique_id": "T1589.002",
+      "technique_name": "Gather Victim Identity Information: Email Addresses",
+      "framework": "ATT&CK",
+      "case": "GTG-20006",
+      "kill_chain": "Reconnaissance",
+      "evidence": "\"Claude fingerprinted email and remote access systems, harvested public information to build target lists\"",
+      "rationale": "Target enumeration prior to phishing.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Device-code authentication phishing against cloud email",
+      "technique_id": "T1566.002",
+      "technique_name": "Phishing: Spearphishing Link",
+      "framework": "ATT&CK",
+      "case": "GTG-20006",
+      "kill_chain": "Delivery",
+      "evidence": "\"device-code authentication exploitation frameworks targeting cloud email services\"",
+      "rationale": "Device-code flow abuse is delivered as a phishing link/prompt.",
+      "confidence": "High",
+      "score": 0.8
+    },
+    {
+      "behavior": "Autonomously modify/redeploy malware to evade detection",
+      "technique_id": "T1027",
+      "technique_name": "Obfuscated Files or Information",
+      "framework": "ATT&CK",
+      "case": "GTG-20006",
+      "kill_chain": "Installation",
+      "evidence": "\"agents autonomously modified and redeployed malware when detected by security products, iterating until evasion succeeded\"",
+      "rationale": "Iterative re-obfuscation to defeat AV/EDR.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Register attacker-controlled devices into victim tenants; renew tokens on schedule",
+      "technique_id": "T1098.005",
+      "technique_name": "Account Manipulation: Device Registration",
+      "framework": "ATT&CK",
+      "case": "GTG-20006",
+      "kill_chain": "Installation",
+      "evidence": "\"automated registration of attacker-controlled devices into victim tenants; scheduled jobs renewed access tokens\"",
+      "rationale": "Device-registration persistence is a known cloud-identity technique.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Bulk mailbox export for exfiltration",
+      "technique_id": "T1114.002",
+      "technique_name": "Email Collection: Remote Email Collection",
+      "framework": "ATT&CK",
+      "case": "GTG-20006",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "\"extraction and organization of hundreds of gigabytes of stolen data through bulk mailbox exports\"",
+      "rationale": "Mailbox-export based exfil.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Mass credential harvesting from decompiled APKs, GitHub, public storage",
+      "technique_id": "T1552.001",
+      "technique_name": "Unsecured Credentials: Credentials In Files",
+      "framework": "ATT&CK",
+      "case": "GTG-50014",
+      "kill_chain": "Reconnaissance",
+      "evidence": "\"1.8 million files decompiled and scanned\"; TruffleHog pipelines",
+      "rationale": "Secrets pulled from source/config artifacts at scale.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Create/convert privileged tokens via developer & auth APIs",
+      "technique_id": "T1098.001",
+      "technique_name": "Account Manipulation: Additional Cloud Credentials",
+      "framework": "ATT&CK",
+      "case": "GTG-50014",
+      "kill_chain": "Exploitation",
+      "evidence": "\"created and converted privileged tokens\"",
+      "rationale": "Token minting/escalation via API abuse.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "'Vibe hacking' - autonomous script authoring & iterative execution against live environments",
+      "technique_id": "T1059",
+      "technique_name": "Command and Scripting Interpreter",
+      "framework": "ATT&CK",
+      "case": "GTG-50014",
+      "kill_chain": "Exploitation",
+      "evidence": "\"operators directed AI to achieve general goals, allowing the model to evaluate environments, author scripts, and execute iteratively\"",
+      "rationale": "AI-authored/executed scripting is the operational core of this case.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Bulk session-token dumps across many tenants in hours",
+      "technique_id": "T1213",
+      "technique_name": "Data from Information Repositories",
+      "framework": "ATT&CK",
+      "case": "GTG-50014",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "\"2,100+ Azure AD token sets across 40 corporate tenants in 34 hours\"",
+      "rationale": "Large-scale repository/session-store extraction.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Stand up breach-data resale platform (Soraki) via Telegram",
+      "technique_id": "T1585.002",
+      "technique_name": "Establish Accounts: Email Accounts",
+      "framework": "ATT&CK",
+      "case": "GTG-50014",
+      "kill_chain": "Weaponization",
+      "evidence": "\"platform 'Soraki' aggregating breach datasets into a searchable service\"; @Soraki_Bot",
+      "rationale": "Infrastructure/persona built to monetize stolen data.",
+      "confidence": "Medium",
+      "score": 0.65
+    },
+    {
+      "behavior": "Autonomous binary reversal + exploit-development loop against firmware",
+      "technique_id": "T1587.001",
+      "technique_name": "Develop Capabilities: Malware",
+      "framework": "ATT&CK",
+      "case": "GTG-10007",
+      "kill_chain": "Weaponization",
+      "evidence": "\"loaded firmware/binaries into decompilers ... wrote and iterated exploit code ... 12+ potential zero-days in one month\"",
+      "rationale": "In-house exploit/capability development.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Continuous automated asset enumeration via dedicated tool servers",
+      "technique_id": "T1595",
+      "technique_name": "Active Scanning",
+      "framework": "ATT&CK",
+      "case": "GTG-10007",
+      "kill_chain": "Reconnaissance",
+      "evidence": "\"continuous automated asset enumeration ... fingerprinting exposed attack surfaces\"",
+      "rationale": "Standing recon infrastructure.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Standing 13-agent fleet crawling target sites/personas with anti-bot bypass",
+      "technique_id": "T1593",
+      "technique_name": "Search Open Websites/Domains",
+      "framework": "ATT&CK",
+      "case": "GTG-10007",
+      "kill_chain": "Reconnaissance",
+      "evidence": "\"fleet of 13 standing AI agents performed scheduled crawling of target websites ... anti-bot bypass\"",
+      "rationale": "OSINT collection at scale with automation.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Credential harvesting + lateral movement post-exploitation",
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "framework": "ATT&CK",
+      "case": "GTG-10007",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "\"credential harvesting, lateral movement, data staging\"",
+      "rationale": "Reuse of harvested creds for lateral movement.",
+      "confidence": "Medium",
+      "score": 0.7
+    },
+    {
+      "behavior": "Containerized pentest platform runs unsupervised injection/XSS/SSRF testing against production web apps",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "framework": "ATT&CK",
+      "case": "GTG-50020",
+      "kill_chain": "Exploitation",
+      "evidence": "\"worker agents ran injection, XSS, authentication-bypass, and SSRF testing against victim web applications without human supervision\"",
+      "rationale": "Direct exploitation of internet-facing apps.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Residential proxies + antidetect browsers + CAPTCHA-solving to defeat KYC/onboarding",
+      "technique_id": "T1585.001",
+      "technique_name": "Establish Accounts: Social Media Accounts",
+      "framework": "ATT&CK",
+      "case": "GTG-50020",
+      "kill_chain": "Weaponization",
+      "evidence": "\"residential proxies and antidetect browser profiles provisioned; bots drove signup flows\"",
+      "rationale": "Fraudulent-account infrastructure for onboarding bypass.",
+      "confidence": "Medium",
+      "score": 0.7
+    },
+    {
+      "behavior": "Develop novel WordPress re-installation race-condition exploit",
+      "technique_id": "T1588.006",
+      "technique_name": "Obtain Capabilities: Vulnerabilities",
+      "framework": "ATT&CK",
+      "case": "GTG-50029",
+      "kill_chain": "Weaponization",
+      "evidence": "\"previously undocumented re-installation race condition creating rogue admin accounts\"",
+      "rationale": "Net-new vulnerability discovery/weaponization.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Scan public containers for exposed API keys; rotate through proxy to blend traffic",
+      "technique_id": "T1596",
+      "technique_name": "Search Open Technical Databases",
+      "framework": "ATT&CK",
+      "case": "GTG-50029",
+      "kill_chain": "Reconnaissance",
+      "evidence": "\"custom Rust-based scanner scanning public containers for exposed API keys\"",
+      "rationale": "Public-surface secret discovery.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Hide webshells among font assets; MU-plugins harvest submitted creds; poison backups",
+      "technique_id": "T1505.003",
+      "technique_name": "Server Software Component: Web Shell",
+      "framework": "ATT&CK",
+      "case": "GTG-50029",
+      "kill_chain": "Installation",
+      "evidence": "\"webshells hidden among font assets\"; \"must-use plugins harvesting submitted credentials\"; \"poisoned victim backups for re-infection\"",
+      "rationale": "Multiple persistence mechanisms on compromised CMS hosts.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Build breach-data search engine (fafsearch) and Tor leak sites",
+      "technique_id": "T1608.001",
+      "technique_name": "Stage Capabilities: Upload Malware",
+      "framework": "ATT&CK",
+      "case": "GTG-50029",
+      "kill_chain": "Actions on Objectives",
+      "evidence": "\"published per-victim encrypted archives on Tor leak sites\"",
+      "rationale": "Staged for extortion/doxxing distribution.",
+      "confidence": "High",
+      "score": 0.8
+    },
+    {
+      "behavior": "Masquerade as legitimate Claude reseller to harvest credentials",
+      "technique_id": "T1036.005",
+      "technique_name": "Masquerading: Match Legitimate Name or Location",
+      "framework": "ATT&CK",
+      "case": "GTG-50021",
+      "kill_chain": "Delivery",
+      "evidence": "\"credential harvester installation masquerading as legitimate AI services\"",
+      "rationale": "Brand impersonation as the delivery vector.",
+      "confidence": "High",
+      "score": 0.85
+    },
+    {
+      "behavior": "Silently proxy traffic to a different model while presenting as Claude",
+      "technique_id": "T1090",
+      "technique_name": "Proxy",
+      "framework": "ATT&CK",
+      "case": "GTG-50021",
+      "kill_chain": "Command & Control",
+      "evidence": "\"silent traffic proxying to different models\"",
+      "rationale": "Traffic redirection through an intermediary the victim doesn't see.",
+      "confidence": "Medium",
+      "score": 0.7
+    }
+  ],
+  "atlas_mappings": [
+    {
+      "behavior": "Compromise AI-vendor evaluation sandboxes to reach internal infrastructure",
+      "technique_id": "AML.T0010",
+      "technique_name": "AI Supply Chain Compromise",
+      "framework": "ATLAS",
+      "case": "GTG-50020",
+      "evidence": "\"compromise AI vendor evaluation sandboxes to steal production API keys from multiple AI providers\"",
+      "rationale": "Direct attack on AI-vendor infrastructure, not merely AI-as-tool.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Steal production API keys from sandbox environments",
+      "technique_id": "AML.T0055",
+      "technique_name": "Unsecured Credentials",
+      "framework": "ATLAS",
+      "case": "GTG-50020",
+      "evidence": "\"successfully stole production API keys from multiple AI providers via sandbox compromise\"",
+      "rationale": "Credential theft specifically targeting AI-service secrets.",
+      "confidence": "High",
+      "score": 0.9
+    },
+    {
+      "behavior": "Use stolen API keys to access AI provider infrastructure",
+      "technique_id": "AML.T0012",
+      "technique_name": "Valid Accounts",
+      "framework": "ATLAS",
+      "case": "GTG-50020",
+      "evidence": "stolen production keys used post-theft (implied continuation of access)",
+      "rationale": "Stolen credentials repurposed as valid access to AI services.",
+      "confidence": "Medium",
+      "score": 0.65
+    },
+    {
+      "behavior": "Pursue unauthorized access to pre-release Claude model weights/endpoints",
+      "technique_id": "AML.T0044",
+      "technique_name": "Full AI Model Access",
+      "framework": "ATLAS",
+      "case": "GTG-50020",
+      "evidence": "\"pursuing over a dozen attack vectors\" toward pre-release model access - explicitly unsuccessful",
+      "rationale": "Attempted, not achieved; recorded as an attempted technique.",
+      "confidence": "Medium",
+      "score": 0.6
+    },
+    {
+      "behavior": "Provision fraudulent accounts to reach AI vendor onboarding/evaluation environments",
+      "technique_id": "AML.T0021",
+      "technique_name": "Establish Accounts",
+      "framework": "ATLAS",
+      "case": "GTG-50020",
+      "evidence": "\"bots drove signup flows\"; automated identity-verification defeat",
+      "rationale": "Account-fraud infrastructure built specifically to reach AI-vendor systems.",
+      "confidence": "Medium",
+      "score": 0.7
+    },
+    {
+      "behavior": "Provision residential proxies/antidetect infra to approach AI vendors undetected",
+      "technique_id": "AML.T0008",
+      "technique_name": "Acquire Infrastructure",
+      "framework": "ATLAS",
+      "case": "GTG-50020",
+      "evidence": "\"residential proxies and antidetect browser profiles provisioned\"",
+      "rationale": "Infrastructure acquired to support the AI-supply-chain operation specifically.",
+      "confidence": "Medium",
+      "score": 0.65
+    }
+  ],
+  "atlas_note": "ATLAS applies ONLY to GTG-50020 (attacks the AI supply chain itself: vendor sandboxes, API keys, pre-release model access). The other five cases use Claude purely as a capability multiplier for conventional cyberattacks against non-AI targets; forcing ATLAS mappings onto those would misrepresent AI-as-tool as AI-as-target.",
+  "kill_chain": {
+    "Reconnaissance": [
+      {
+        "case": "GTG-20006",
+        "behavior": "Fingerprint mail/remote-access systems, build phishing lists",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50014",
+        "behavior": "Mass credential harvesting from APKs/GitHub/public storage",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-10007",
+        "behavior": "Standing 13-agent recon fleet; continuous asset enumeration",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50029",
+        "behavior": "Scan public containers for exposed API keys",
+        "confidence": "High"
+      }
+    ],
+    "Weaponization": [
+      {
+        "case": "GTG-10007",
+        "behavior": "Autonomous exploit-dev loop yielding 12+ zero-days/month",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50029",
+        "behavior": "Develop novel WordPress race-condition exploit",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50014",
+        "behavior": "Stand up Soraki breach-resale platform",
+        "confidence": "Medium"
+      },
+      {
+        "case": "GTG-50020",
+        "behavior": "Provision fraud-account and proxy infrastructure",
+        "confidence": "Medium"
+      }
+    ],
+    "Delivery": [
+      {
+        "case": "GTG-20006",
+        "behavior": "Device-code phishing against cloud email",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50021",
+        "behavior": "Fraudulent reseller storefront as delivery vector",
+        "confidence": "High"
+      }
+    ],
+    "Exploitation": [
+      {
+        "case": "GTG-50014",
+        "behavior": "Vibe-hacking: autonomous script authoring/execution against live environments",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50020",
+        "behavior": "Unsupervised injection/XSS/SSRF testing against production web apps",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50029",
+        "behavior": "Exploit WordPress race condition on 4+ sites",
+        "confidence": "High"
+      }
+    ],
+    "Installation": [
+      {
+        "case": "GTG-20006",
+        "behavior": "Autonomous malware re-obfuscation to defeat detection; device registration persistence",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50029",
+        "behavior": "Webshells in font assets; malicious must-use plugins; poisoned backups",
+        "confidence": "High"
+      }
+    ],
+    "Command & Control": [
+      {
+        "case": "GTG-50021",
+        "behavior": "Silent proxying of victim traffic to a different model",
+        "confidence": "Medium"
+      },
+      {
+        "case": "GTG-50029",
+        "behavior": "BeEF-based browser-exploitation C2 with visitor fingerprinting",
+        "confidence": "High"
+      }
+    ],
+    "Actions on Objectives": [
+      {
+        "case": "GTG-20006",
+        "behavior": "Bulk mailbox export (hundreds of GB)",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50014",
+        "behavior": "2,100+ token sets across 40 tenants exfiltrated in 34 hours",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-10007",
+        "behavior": "Citizen/student PII collection across ~50 orgs",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50029",
+        "behavior": "12-26 GB political/PII data published on Tor leak sites",
+        "confidence": "High"
+      },
+      {
+        "case": "GTG-50020",
+        "behavior": "Production AI-vendor API keys stolen; pre-release model access attempted but failed",
+        "confidence": "High"
+      }
+    ]
+  },
+  "diamond_model": {
+    "GTG-20006": {
+      "adversary": "Russian state-nexus espionage actor (internal designation only; no public actor name given in extractable text)",
+      "capability": "PowerChrome, WUEngine, Shadow C2, MiniPlasma, CloudSyncSvc, GiftDrop, DarkSword; WPPConnect-based WhatsApp takeover",
+      "infrastructure": "ms365-live.com, teams.ms365-live.com; compromised hosting; hotel-WiFi DNS hijacking",
+      "victim": "20+ UA/EU government, defense, embassy, drone-manufacturer orgs; North African govt ID authority (300k+ records)",
+      "confidence": "High for mechanics; Low for named attribution"
+    },
+    "GTG-50014": {
+      "adversary": "ShinyHunters affiliates (French-speaking operators: MeowSHA, frkoo, blazespider)",
+      "capability": "TruffleHog-based harvesting pipelines; Soraki aggregation platform; vibe-hacking workflow",
+      "infrastructure": "policenationale.cc; @Soraki_Bot; 10 AWS EC2 workers; consumer cloud/mesh-VPN NAS exfil",
+      "victim": "Tech providers, airlines, energy cos, 200+ downstream SaaS customers, French retail, nonprofits",
+      "confidence": "High - ShinyHunters affiliation stated directly, and the ShinyHunters brand itself resolves to MITRE ATT&CK G1057"
+    },
+    "GTG-10007": {
+      "adversary": "Chinese-speaking operators, likely Changsha/Hunan; 2 undergrad CS students, 1 ex-Sangfor intern",
+      "capability": "Autonomous decompiler/exploit-dev loop; 13-agent OSINT fleet; persistent project memory",
+      "infrastructure": "Dedicated tool servers; distribution portal (unnamed)",
+      "victim": "~50 orgs globally (education, retail, energy, tech, healthcare, finance, mfg, govt)",
+      "confidence": "Medium - operator profile detailed but no formal group name"
+    },
+    "GTG-50020": {
+      "adversary": "Russian financial cybercriminal operator",
+      "capability": "PentAGI + local model gateway; prompt-injection against AI vendor sandboxes; KYC-defeat tooling",
+      "infrastructure": "Residential proxies, antidetect browser profiles, automated inbox-polling fraud factory",
+      "victim": "~30 AI companies (4 days); prior hotel-booking/fintech victims (26GB, $1.5-2.5M extortion)",
+      "confidence": "High - detailed, specific, includes an explicit stated failure (no pre-release model access)"
+    },
+    "GTG-50029": {
+      "adversary": "Single French-speaking hacktivist operator",
+      "capability": "Novel WordPress race-condition exploit; BeEF C2; fafsearch breach-search engine",
+      "infrastructure": "Compromised WordPress hosts; Tor leak sites",
+      "victim": "42 tracked EU political/media/think-tank entities, 14 breached; incl. minors' data",
+      "confidence": "High - single-operator claim explicit and specific"
+    },
+    "GTG-50021": {
+      "adversary": "Unnamed fraudulent-reseller operator(s)",
+      "capability": "Credential harvester masquerading as Claude access; silent model-swap proxying",
+      "infrastructure": "awstore.cloud, kiro.cheap, sys-tools.cfd, aws-us-east-3.com, holdboost.store, deltaclient.xyz",
+      "victim": "Claude users seeking discounted access",
+      "confidence": "Medium - mechanics clear, no named individual"
+    }
+  },
+  "incidents": [
+    {
+      "id": "GTG-20006",
+      "name": "Russian state-nexus espionage vs. Ukraine/EU government & defense",
+      "confidence": "High",
+      "score": 0.85,
+      "rationale": "Directly documented with named malware, infrastructure, and 20+ named target categories."
+    },
+    {
+      "id": "GTG-50014",
+      "name": "ShinyHunters-affiliated credential-harvesting collective",
+      "confidence": "High",
+      "score": 0.85,
+      "rationale": "Actor brand named directly, resolves to a real MITRE ATT&CK group (G1057), specific metrics given (34hrs/40 tenants)."
+    },
+    {
+      "id": "GTG-10007",
+      "name": "Chinese exploit-foundry / vulnerability-research operation",
+      "confidence": "Medium",
+      "score": 0.75,
+      "rationale": "Detailed TTPs and operator profile, but no named group or public alias - internal designation only."
+    },
+    {
+      "id": "GTG-50020",
+      "name": "Russian financial actor targeting the AI supply chain",
+      "confidence": "High",
+      "score": 0.85,
+      "rationale": "The one case in this report that is a genuine attack ON AI infrastructure rather than AI-as-tool; outcome (partial success, partial failure) explicitly stated."
+    },
+    {
+      "id": "GTG-50029",
+      "name": "French hacktivist campaign vs. European political entities",
+      "confidence": "High",
+      "score": 0.85,
+      "rationale": "Single-operator claim, specific exploit, specific victim/volume figures."
+    },
+    {
+      "id": "GTG-50021",
+      "name": "Fraudulent Claude reseller / credential-harvesting scheme",
+      "confidence": "Medium",
+      "score": 0.7,
+      "rationale": "Clear mechanics and named domains, but no operator attribution given."
+    }
+  ],
+  "indicators": {
+    "domain": [
+      {
+        "value": "ms365-live.com",
+        "defanged": "ms365-live[.]com",
+        "context": "national identity records stolen). Infrastructure (named): ms365-live.com, teams.ms365-live.com (fake Microsoft-mimicking domains); m"
+      },
+      {
+        "value": "teams.ms365-live.com",
+        "defanged": "teams[.]ms365-live[.]com",
+        "context": "y records stolen). Infrastructure (named): ms365-live.com, teams.ms365-live.com (fake Microsoft-mimicking domains); multiple compromised ho"
+      },
+      {
+        "value": "policenationale.cc",
+        "defanged": "policenationale[.]cc",
+        "context": "atasets into a searchable service. Infrastructure (named): policenationale.cc (fake police domain used as a carding autoshop); Telegram M"
+      },
+      {
+        "value": "awstore.cloud",
+        "defanged": "awstore[.]cloud",
+        "context": "ther fraudulent resellers. Infrastructure (named domains): awstore.cloud, kiro.cheap, sys-tools.cfd, aws-us-east-3.com, holdboost.st"
+      },
+      {
+        "value": "kiro.cheap",
+        "defanged": "kiro[.]cheap",
+        "context": "resellers. Infrastructure (named domains): awstore.cloud, kiro.cheap, sys-tools.cfd, aws-us-east-3.com, holdboost.store, deltacl"
+      },
+      {
+        "value": "sys-tools.cfd",
+        "defanged": "sys-tools[.]cfd",
+        "context": "Infrastructure (named domains): awstore.cloud, kiro.cheap, sys-tools.cfd, aws-us-east-3.com, holdboost.store, deltaclient.xyz === C"
+      },
+      {
+        "value": "aws-us-east-3.com",
+        "defanged": "aws-us-east-3[.]com",
+        "context": "(named domains): awstore.cloud, kiro.cheap, sys-tools.cfd, aws-us-east-3.com, holdboost.store, deltaclient.xyz === CROSS-CUTTING TRENDS"
+      },
+      {
+        "value": "holdboost.store",
+        "defanged": "holdboost[.]store",
+        "context": "wstore.cloud, kiro.cheap, sys-tools.cfd, aws-us-east-3.com, holdboost.store, deltaclient.xyz === CROSS-CUTTING TRENDS === AI supply ch"
+      },
+      {
+        "value": "deltaclient.xyz",
+        "defanged": "deltaclient[.]xyz",
+        "context": "o.cheap, sys-tools.cfd, aws-us-east-3.com, holdboost.store, deltaclient.xyz === CROSS-CUTTING TRENDS === AI supply chain as a target:"
+      }
+    ]
+  },
+  "malware": [
+    {
+      "name": "PowerChrome",
+      "type": "malware (Windows)",
+      "case": "GTG-20006",
+      "evidence": "Windows malware family list",
+      "confidence": 0.85
+    },
+    {
+      "name": "WUEngine",
+      "type": "malware (Windows)",
+      "case": "GTG-20006",
+      "evidence": "Windows malware family list",
+      "confidence": 0.85
+    },
+    {
+      "name": "Shadow C2",
+      "type": "C2 framework (Windows)",
+      "case": "GTG-20006",
+      "evidence": "Windows malware family list",
+      "confidence": 0.85
+    },
+    {
+      "name": "MiniPlasma",
+      "type": "malware (Windows)",
+      "case": "GTG-20006",
+      "evidence": "Windows malware family list",
+      "confidence": 0.85
+    },
+    {
+      "name": "CloudSyncSvc",
+      "type": "malware (Windows)",
+      "case": "GTG-20006",
+      "evidence": "Windows malware family list",
+      "confidence": 0.85
+    },
+    {
+      "name": "GiftDrop",
+      "type": "malware (Android)",
+      "case": "GTG-20006",
+      "evidence": "Android malware family",
+      "confidence": 0.85
+    },
+    {
+      "name": "DarkSword",
+      "type": "malware (iOS)",
+      "case": "GTG-20006",
+      "evidence": "iOS malware family",
+      "confidence": 0.85
+    }
+  ],
+  "tools": [
+    {
+      "name": "PentAGI",
+      "role": "open-source offensive agent framework",
+      "cases": [
+        "GTG-50020"
+      ]
+    },
+    {
+      "name": "TruffleHog",
+      "role": "credential scanning",
+      "cases": [
+        "GTG-50014"
+      ]
+    },
+    {
+      "name": "WPPConnect",
+      "role": "WhatsApp automation library, used for account takeover",
+      "cases": [
+        "GTG-20006"
+      ]
+    },
+    {
+      "name": "LiteLLM",
+      "role": "LLM wrapper/gateway service",
+      "cases": [
+        "GTG-50020 (local model gateway front)"
+      ]
+    },
+    {
+      "name": "BeEF",
+      "role": "browser exploitation framework / C2",
+      "cases": [
+        "GTG-50029"
+      ]
+    },
+    {
+      "name": "Soraki",
+      "role": "breach-dataset aggregation platform (Telegram Mini App)",
+      "cases": [
+        "GTG-50014"
+      ]
+    },
+    {
+      "name": "fafsearch",
+      "role": "compiled breach-dump search engine built by the operator",
+      "cases": [
+        "GTG-50029"
+      ]
+    }
+  ],
+  "threat_actors": [
+    {
+      "name": "ShinyHunters",
+      "aliases": [],
+      "evidence": "\"GTG-50014: ShinyHunters Affiliate Credential-Harvesting Collective\"",
+      "confidence": 0.6,
+      "note": "Named as affiliates of a known criminal brand, not confirmed as the core ShinyHunters group."
+    },
+    {
+      "name": "GTG-20006",
+      "aliases": [],
+      "evidence": "Anthropic-internal designation, Russian state-nexus espionage actor",
+      "confidence": 0.3,
+      "note": "No public actor name given in the extractable narrative; internal case ID only."
+    },
+    {
+      "name": "GTG-10007",
+      "aliases": [],
+      "evidence": "Anthropic-internal designation, Chinese-speaking exploit-development operators (Changsha, Hunan)",
+      "confidence": 0.3
+    },
+    {
+      "name": "GTG-50020",
+      "aliases": [],
+      "evidence": "Anthropic-internal designation, Russian financial cybercriminal targeting AI vendors",
+      "confidence": 0.3
+    },
+    {
+      "name": "GTG-50029",
+      "aliases": [],
+      "evidence": "Anthropic-internal designation, single French-speaking hacktivist operator",
+      "confidence": 0.3
+    },
+    {
+      "name": "GTG-50021",
+      "aliases": [],
+      "evidence": "Anthropic-internal designation, fraudulent Claude reseller operation",
+      "confidence": 0.3
+    }
+  ],
+  "enrichment": {
+    "mitre_actors": [
+      {
+        "query": "ShinyHunters",
+        "matched": true,
+        "attack_id": "G1057",
+        "name": "ShinyHunters",
+        "aliases": [
+          "ShinyHunters",
+          "UNC6240",
+          "Bling Libra"
+        ],
+        "description": "[ShinyHunters](https://attack.mitre.org/groups/G1057) is a cyber criminal collective that has been active since at least 2019 operating under the ShinyCorp persona. [ShinyHunters](https://attack.mitre.org/groups/G1057) has targeted multiple industries and geographic regions gathering legitimate credentials and personally identifiable information (PII) for resale or extortion of victims. [ShinyHunters](https://attack.mitre.org/groups/G1057) has been associated with the broader collective called The Community, also known as The Com whose members have also included [Scattered Spider](https://atta",
+        "associated_techniques": [
+          "T1560.002",
+          "T1550.001",
+          "T1573.002",
+          "T1585.002",
+          "T1082",
+          "T1105",
+          "T1190",
+          "T1530",
+          "T1059.007",
+          "T1078",
+          "T1567",
+          "T1598.003",
+          "T1203",
+          "T1528",
+          "T1083",
+          "T1588.002",
+          "T1213.003",
+          "T1684",
+          "T1552.001",
+          "T1078.004",
+          "T1078.002",
+          "T1016",
+          "T1491.001",
+          "T1036.005",
+          "T1219",
+          "T1598",
+          "T1195.001",
+          "T1657",
+          "T1580",
+          "T1018",
+          "T1059.009",
+          "T1583.004",
+          "T1072",
+          "T1588.007",
+          "T1110",
+          "T1213.006",
+          "T1589.001",
+          "T1593.003",
+          "T1583.001",
+          "T1090.003",
+          "T1587.004",
+          "T1485",
+          "T1619",
+          "T1595.002",
+          "T1069.003",
+          "T1210"
+        ],
+        "associated_software": [
+          "Tor"
+        ]
+      },
+      {
+        "query": "GTG-20006",
+        "matched": false,
+        "suggestions": []
+      },
+      {
+        "query": "GTG-10007",
+        "matched": false,
+        "suggestions": []
+      },
+      {
+        "query": "GTG-50020",
+        "matched": false,
+        "suggestions": []
+      },
+      {
+        "query": "GTG-50029",
+        "matched": false,
+        "suggestions": []
+      },
+      {
+        "query": "GTG-50021",
+        "matched": false,
+        "suggestions": []
+      }
+    ],
+    "invalid_technique_ids": [],
+    "atlas_ids_validated_against_cached_dataset": [
+      "AML.T0010",
+      "AML.T0055",
+      "AML.T0012",
+      "AML.T0044",
+      "AML.T0021",
+      "AML.T0008"
+    ],
+    "virustotal": {
+      "skipped": true,
+      "reason": "VT_API_KEY not set",
+      "hashes_seen": 0
+    }
+  },
+  "analyst_notes": [
+    "SOURCE FIDELITY GAP: the report's full IOC CSV (hashes, IPs, complete domain/email lists) could not be extracted verbatim - the fetch tool treated it as Anthropic's proprietary threat-research data and returned only a category description. This analysis is built from the six narrative case summaries that WERE extractable, not the complete indicator set. Zero file hashes were available for VirusTotal enrichment as a direct consequence - this is a data-availability gap, not a missing-API-key gap (VT_API_KEY was also unset, but moot here).",
+    "Two 40-hex-character strings were auto-extracted as SHA1-looking hashes but are Anthropic's own CDN content-hash URL path segments (from the PDF/CSV download links), not malware hashes - excluded from the indicator set.",
+    "ShinyHunters (GTG-50014) is the only actor in this report that resolves to a real MITRE ATT&CK group: G1057, aliases UNC6240 / Bling Libra, associated with the broader 'The Com' collective (also linked to Scattered Spider). All other GTG-designations are Anthropic-internal case IDs with no public actor name given in the extractable text, and correctly return no ATT&CK match.",
+    "MITRE ATLAS mapping was deliberately limited to GTG-50020. The report's central theme - AI used AS A TOOL for conventional attacks - is an ATT&CK story, not an ATLAS one. Applying ATLAS broadly would have been a category error; GTG-50020 is qualitatively different because the AI vendors' own infrastructure (evaluation sandboxes, API keys, model access) is the target.",
+    "The report itself cites no MITRE ATT&CK technique IDs and no CVE identifiers; all 22 ATT&CK IDs and 6 ATLAS IDs here are analyst-assigned from the described behaviors and validated against the cached datasets - none were invalid.",
+    "GTG-50020's pursuit of pre-release Claude model access is recorded as ATTEMPTED, NOT ACHIEVED - the report states this explicitly ('never gained access ... despite pursuing over a dozen attack vectors'). Do not read AML.T0044 in this report as a successful compromise."
+  ]
+}

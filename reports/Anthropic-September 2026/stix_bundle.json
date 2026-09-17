@@ -1,0 +1,524 @@
+{
+  "type": "bundle",
+  "id": "bundle--58b58bd1-7693-4d80-9a1b-ac2dcc559309",
+  "objects": [
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3c6c0b44-e645-499c-a419-ed587aa789c8",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "domain: ms365-live.com",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-11T22:51:34.000Z",
+      "pattern": "[domain-name:value = 'ms365-live.com']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4fb9b6ec-55da-4390-9ae0-097d99b34366",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "domain: teams.ms365-live.com",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-11T22:51:34.000Z",
+      "pattern": "[domain-name:value = 'teams.ms365-live.com']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d7c6f509-4405-41d9-bb32-121a72a490a9",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "domain: policenationale.cc",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-11T22:51:34.000Z",
+      "pattern": "[domain-name:value = 'policenationale.cc']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e4e766a2-d60f-458b-866c-2604a55d111b",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "domain: awstore.cloud",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-11T22:51:34.000Z",
+      "pattern": "[domain-name:value = 'awstore.cloud']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7cc23fe2-92fb-404d-9762-1b6b21132233",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "domain: kiro.cheap",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-11T22:51:34.000Z",
+      "pattern": "[domain-name:value = 'kiro.cheap']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--fb98ca5f-0f50-4bdc-87af-ed37d2011843",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "domain: sys-tools.cfd",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-11T22:51:34.000Z",
+      "pattern": "[domain-name:value = 'sys-tools.cfd']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5744c4ba-828c-429c-bda2-96fb9aa3d6c0",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "domain: aws-us-east-3.com",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-11T22:51:34.000Z",
+      "pattern": "[domain-name:value = 'aws-us-east-3.com']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ea0d6720-48d5-4e98-bdfa-31eb955a9e98",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "domain: holdboost.store",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-11T22:51:34.000Z",
+      "pattern": "[domain-name:value = 'holdboost.store']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--67bc157c-1bd1-4bf0-be4a-a19d05117e3a",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "domain: deltaclient.xyz",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-11T22:51:34.000Z",
+      "pattern": "[domain-name:value = 'deltaclient.xyz']"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--ed9145e6-f763-4af0-8bb0-f382a1bf8c36",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "PowerChrome",
+      "is_family": true
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--6c331222-71e3-4cee-80e7-c068649a1ae7",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "WUEngine",
+      "is_family": true
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--9d435fe9-601c-4b54-aa12-ecf322e41ac8",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Shadow C2",
+      "is_family": true
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--d1ae2869-ce6f-4118-aa84-c40f55af1169",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "MiniPlasma",
+      "is_family": true
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--9adf8cb5-61db-4a76-b701-db69fdaab809",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "CloudSyncSvc",
+      "is_family": true
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--ab10784f-b4da-4b2b-a7fd-ff9ff5c78a36",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "GiftDrop",
+      "is_family": true
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--b3c6e294-5e57-441d-9ac5-e6e67a2ddcce",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "DarkSword",
+      "is_family": true
+    },
+    {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--af9f6f1c-ea1f-4558-8f50-3e48f7c11151",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "ShinyHunters"
+    },
+    {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--c4c45f3a-3cf2-4341-90c1-9819206dcb24",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "GTG-20006"
+    },
+    {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--61e44e4b-c618-4c60-b1dd-c4032a1f88a8",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "GTG-10007"
+    },
+    {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--c9759b95-8b7b-4c76-94d8-b75119a14b92",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "GTG-50020"
+    },
+    {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--00cb2811-49a5-4738-9902-0bd4e61f5b79",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "GTG-50029"
+    },
+    {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--e6f67067-6014-48d2-9d05-75995e2274b2",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "GTG-50021"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--9a41155d-57e7-41e8-9db1-6ea0e0212f08",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Gather Victim Identity Information: Email Addresses",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1589.002"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--106c6135-cd56-48b1-8ffb-9fecce351691",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Phishing: Spearphishing Link",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--f12de6b1-1acd-4223-a752-f8ab4675469e",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Obfuscated Files or Information",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--2c2def9f-c200-43a0-9dfc-b6229a47b301",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Account Manipulation: Device Registration",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1098.005"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--7f32e21f-e451-491e-a277-8350053238f1",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Email Collection: Remote Email Collection",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--557bf37d-6998-4427-a42c-c2daa7b07ef8",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Unsecured Credentials: Credentials In Files",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1552.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--8ccae6da-95cc-47bd-9da7-c578e7e375bc",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Account Manipulation: Additional Cloud Credentials",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1098.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--e8a8ed62-850e-4171-9b54-60b365569720",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Command and Scripting Interpreter",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1059"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--8e6c3b2c-0f54-4b0d-8ff2-e97b5aa4ca56",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Data from Information Repositories",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1213"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--3b26918b-30c3-4104-a11b-19dced2ec062",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Establish Accounts: Email Accounts",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1585.002"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--10fedf1f-758f-4dae-af16-832d9a69bca9",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Develop Capabilities: Malware",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1587.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--1bcc36df-3cd4-4d36-963f-0af9b8d455ba",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Active Scanning",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1595"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--49bc7191-ca16-40ab-b96f-34cf00f5ecdd",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Search Open Websites/Domains",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1593"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--83559f10-fdde-4ec4-a1a0-adba2d70cc64",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Valid Accounts",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--17ade125-9b8f-43df-b784-688ee70a623d",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Exploit Public-Facing Application",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1190"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--5a6ec51b-461a-41fe-bfe8-394d3ab69081",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Establish Accounts: Social Media Accounts",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1585.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--dd18e3b9-9436-4058-8a0c-863136b60efb",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Obtain Capabilities: Vulnerabilities",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1588.006"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--5844a491-d7f5-45fa-b4f8-ae945ee00bfa",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Search Open Technical Databases",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1596"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--25f1d71b-7777-476e-89b1-283199727622",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Server Software Component: Web Shell",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1505.003"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--abc63058-eb2e-47fd-b365-9608ad3e10f4",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Stage Capabilities: Upload Malware",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1608.001"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--be13501e-10bc-4cb1-b0ef-2b8acedec80a",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Masquerading: Match Legitimate Name or Location",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--648949c7-28cb-4767-b4fc-67b4d6658819",
+      "created": "2026-09-11T22:51:34.000Z",
+      "modified": "2026-09-11T22:51:34.000Z",
+      "name": "Proxy",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1090"
+        }
+      ]
+    }
+  ]
+}
