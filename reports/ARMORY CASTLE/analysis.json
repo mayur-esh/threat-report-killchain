@@ -1,0 +1,632 @@
+{
+  "source": {
+    "title": "ARMORY CASTLE Exploits BeyondTrust",
+    "url": "https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-beyondtrust",
+    "publisher": "Google Threat Intelligence Group / Mandiant",
+    "published": "2026-10-15"
+  },
+  "attack_version": "20.0",
+  "incidents": [
+    {
+      "id": "INC-1",
+      "name": "BeyondTrust Remote Support appliance intrusion (single Mandiant IR engagement)",
+      "confidence": "High",
+      "confidence_score": 0.9,
+      "rationale": "One engagement described end to end; no second victim or wave reported."
+    }
+  ],
+  "diamond_model": {
+    "adversary": {
+      "finding": "ARMORY CASTLE (formerly UNC5221), suspected PRC-nexus espionage",
+      "evidence": "suspected PRC-nexus espionage threat actor (formerly tracked as UNC5221)",
+      "confidence": "High (vendor attribution); Medium (state nexus, hedged as 'suspected')"
+    },
+    "capability": {
+      "finding": "CVE-2026-102764 zero-day; SAWFLY; BARECLAW; unrecovered staging shell; abuse of bt-secrets, bt-sysconfig, haproxy.conf",
+      "evidence": "newly identified custom malware, the SAWFLY webshell and the BARECLAW tunneler",
+      "confidence": "High"
+    },
+    "infrastructure": {
+      "finding": "No external C2 IPs or domains published. Victim appliance used as the pivot; inbound via /uidchanarge through HAProxy.",
+      "evidence": "routes the incoming web stream locally (127.0.0.1 / localhost) to TCP port 19800",
+      "confidence": "High for on-box infrastructure; none for adversary-owned infrastructure"
+    },
+    "victim": {
+      "finding": "One organization running self-hosted or appliance BeyondTrust RS; sector and geography not disclosed",
+      "evidence": "During an incident response engagement",
+      "confidence": "Low (victimology absent)"
+    },
+    "meta": {
+      "timeframe": "Exploitation late Aug 2026; SaaS patched 2026-10-09; disclosure 2026-10-15",
+      "actor_active_since": "October 2023 per report"
+    }
+  },
+  "kill_chain": {
+    "Reconnaissance": [],
+    "Weaponization": [
+      "Zero-day exploit for CVE-2026-102764 (implied, no technique ID)"
+    ],
+    "Delivery": [
+      "T1190"
+    ],
+    "Exploitation": [
+      "T1190"
+    ],
+    "Installation": [
+      "T1505.003",
+      "T1027",
+      "T1548.001",
+      "T1036.005",
+      "T1037",
+      "T1548.003",
+      "T1105"
+    ],
+    "Command & Control": [
+      "T1132.001",
+      "T1573.001",
+      "T1071.001",
+      "T1090.001",
+      "T1572"
+    ],
+    "Actions on Objectives": [
+      "T1059.004",
+      "T1555",
+      "T1685.006",
+      "T1070.004",
+      "T1078",
+      "T1098",
+      "T1219",
+      "T1083",
+      "T1005",
+      "T1041"
+    ]
+  },
+  "atlas_applicability": "Not applicable. No AI/ML system is targeted or abused in INC-1.",
+  "technique_mappings": [
+    {
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "tactic": "Initial Access",
+      "kill_chain_phase": "Exploitation",
+      "behavior": "Zero-day exploitation of CVE-2026-102764 in BeyondTrust Remote Support",
+      "evidence": "exploited this vulnerability as a zero-day, in late August 2026",
+      "rationale": "Stated outright, with CVE and timeframe.",
+      "confidence": "High",
+      "confidence_score": 0.95,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1505.003",
+      "technique_name": "Web Shell",
+      "tactic": "Persistence",
+      "kill_chain_phase": "Installation",
+      "behavior": "Unrecovered staging webshell, then SAWFLY written to the Laravel web root",
+      "evidence": "the file system recorded the creation of the SAWFLY webshell at the web root path",
+      "rationale": "Named malware, path and file-system timestamp.",
+      "confidence": "High",
+      "confidence_score": 0.95,
+      "framework": "ATT&CK",
+      "performed_by": [
+        "SAWFLY",
+        "Unnamed staging webshell (app_84304470%2Ephp)"
+      ]
+    },
+    {
+      "technique_id": "T1027",
+      "technique_name": "Obfuscated Files or Information",
+      "tactic": "Stealth",
+      "kill_chain_phase": "Installation",
+      "behavior": "SAWFLY is obfuscated PHP with an obfuscated trigger parameter",
+      "evidence": "SAWFLY (mangoapi.php) is an obfuscated, lightweight PHP webshell",
+      "rationale": "Stated; sub-technique not determinable from text.",
+      "confidence": "High",
+      "confidence_score": 0.85,
+      "framework": "ATT&CK",
+      "performed_by": [
+        "SAWFLY"
+      ]
+    },
+    {
+      "technique_id": "T1132.001",
+      "technique_name": "Standard Encoding",
+      "tactic": "Command and Control",
+      "kill_chain_phase": "Command & Control",
+      "behavior": "Base32 wrapping of SAWFLY C2 traffic",
+      "evidence": "a custom Base32 transport layer",
+      "rationale": "Report says 'custom', but the YARA string is the standard RFC 4648 alphabet, so .001 over .002 is tentative.",
+      "confidence": "Medium",
+      "confidence_score": 0.65,
+      "framework": "ATT&CK",
+      "performed_by": [
+        "SAWFLY"
+      ]
+    },
+    {
+      "technique_id": "T1573.001",
+      "technique_name": "Symmetric Cryptography",
+      "tactic": "Command and Control",
+      "kill_chain_phase": "Command & Control",
+      "behavior": "RC4 with a hardcoded 32-byte key (SAWFLY); token-derived XOR stream (BARECLAW)",
+      "evidence": "decrypts it using RC4 with a hardcoded 32-byte key",
+      "rationale": "Cipher and key handling stated for both tools.",
+      "confidence": "High",
+      "confidence_score": 0.9,
+      "framework": "ATT&CK",
+      "performed_by": [
+        "SAWFLY",
+        "BARECLAW"
+      ]
+    },
+    {
+      "technique_id": "T1071.001",
+      "technique_name": "Web Protocols",
+      "tactic": "Command and Control",
+      "kill_chain_phase": "Command & Control",
+      "behavior": "C2 over HTTP POST to SAWFLY; WebSocket to BARECLAW through HAProxy",
+      "evidence": "The webshell inspects incoming HTTP POST requests for the obfuscated parameter _c94mfe",
+      "rationale": "Transport stated.",
+      "confidence": "High",
+      "confidence_score": 0.9,
+      "framework": "ATT&CK",
+      "performed_by": [
+        "SAWFLY",
+        "BARECLAW"
+      ]
+    },
+    {
+      "technique_id": "T1059.004",
+      "technique_name": "Unix Shell",
+      "tactic": "Execution",
+      "kill_chain_phase": "Actions on Objectives",
+      "behavior": "sh -c log deletion and a bash persistence script",
+      "evidence": "/usr/sbin/sh -c 'rm -f /home/bomgar/log/bt-secrets.log ...'",
+      "rationale": "Recovered commands shown verbatim.",
+      "confidence": "High",
+      "confidence_score": 0.9,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1548.001",
+      "technique_name": "Setuid and Setgid",
+      "tactic": "Privilege Escalation",
+      "kill_chain_phase": "Installation",
+      "behavior": "Copied /bin/sh to /usr/bin/dbus-authd, chowned to root, set SUID",
+      "evidence": "copied the system shell executable (/bin/sh) to the file /usr/bin/dbus-authd",
+      "rationale": "Stated with file path and permission change.",
+      "confidence": "High",
+      "confidence_score": 0.95,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1036.005",
+      "technique_name": "Match Legitimate Resource Name or Location",
+      "tactic": "Stealth",
+      "kill_chain_phase": "Installation",
+      "behavior": "SUID shell named to resemble a D-Bus component in /usr/bin",
+      "evidence": "/usr/bin/dbus-authd",
+      "rationale": "Analyst inference from the name; the report never calls it masquerading.",
+      "confidence": "Medium",
+      "confidence_score": 0.6,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1555",
+      "technique_name": "Credentials from Password Stores",
+      "tactic": "Credential Access",
+      "kill_chain_phase": "Actions on Objectives",
+      "behavior": "Dumping the appliance vault with the native bt-secrets CLI",
+      "evidence": "/ns/sbin/bt-secrets get vault",
+      "rationale": "Attempt is stated; whether the dump succeeded is not.",
+      "confidence": "High",
+      "confidence_score": 0.85,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1037",
+      "technique_name": "Boot or Logon Initialization Scripts",
+      "tactic": "Persistence / Privilege Escalation",
+      "kill_chain_phase": "Installation",
+      "behavior": "zz-root-persist dropped in the vendor post_boot.d startup directory",
+      "evidence": "created the /home/bomgar/sbin/post_boot.d directory, which is reserved for scripts executed automatically at system startup",
+      "rationale": "Behavior stated; parent ID used because a vendor post-boot hook is not a standard RC script.",
+      "confidence": "High",
+      "confidence_score": 0.85,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1548.003",
+      "technique_name": "Sudo and Sudo Caching",
+      "tactic": "Privilege Escalation",
+      "kill_chain_phase": "Installation",
+      "behavior": "NOPASSWD: ALL appended to sudoers.template, rebuilt via bt-sysconfig",
+      "evidence": "appends '%SITE_SERVICE_ACCOUNT% ALL=(ALL) NOPASSWD: ALL' to the template",
+      "rationale": "Script contents shown verbatim.",
+      "confidence": "High",
+      "confidence_score": 0.95,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1685.006",
+      "technique_name": "Clear Linux or Mac System Logs",
+      "tactic": "Defense Impairment",
+      "kill_chain_phase": "Actions on Objectives",
+      "behavior": "rm -f of /var/log/messages and /ns/log/* appliance logs",
+      "evidence": "rm -f /ns/log/auth.log ... /var/log/messages",
+      "rationale": "Recovered command; T1070.002 is revoked in ATT&CK v20 and points here.",
+      "confidence": "High",
+      "confidence_score": 0.95,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1070.004",
+      "technique_name": "File Deletion",
+      "tactic": "Stealth",
+      "kill_chain_phase": "Actions on Objectives",
+      "behavior": "Deleted bt-secrets.log, rotated archives and /tmp/sshauth.*",
+      "evidence": "rm -f /home/bomgar/log/bt-secrets.log /home/bomgar/log/bt-secrets.log.*",
+      "rationale": "Recovered command.",
+      "confidence": "High",
+      "confidence_score": 0.9,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "tactic": "Stealth / Persistence / Privilege Escalation / Initial Access",
+      "kill_chain_phase": "Actions on Objectives",
+      "behavior": "Logged into /login with a compromised Administrator account",
+      "evidence": "leveraged the Administrator account to log into the web administrative portal",
+      "rationale": "Stated, with syslog login event.",
+      "confidence": "High",
+      "confidence_score": 0.9,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "tactic": "Persistence / Privilege Escalation",
+      "kill_chain_phase": "Actions on Objectives",
+      "behavior": "Raised Jump Item and Team roles from No Access to Administrator",
+      "evidence": "upgrading both local Jump Items and Team permissions from No Access to Administrator",
+      "rationale": "Stated, with user_changed syslog event.",
+      "confidence": "High",
+      "confidence_score": 0.95,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1219",
+      "technique_name": "Remote Access Tools",
+      "tactic": "Command and Control",
+      "kill_chain_phase": "Actions on Objectives",
+      "behavior": "Used the product's own support sessions to reach internal endpoints",
+      "evidence": "establish a remote support session to target internal endpoints",
+      "rationale": "Stated; the legitimate tool is the lateral-movement channel.",
+      "confidence": "High",
+      "confidence_score": 0.85,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1083",
+      "technique_name": "File and Directory Discovery",
+      "tactic": "Discovery",
+      "kill_chain_phase": "Actions on Objectives",
+      "behavior": "Requested full file-system access on reached endpoints",
+      "evidence": "request and obtain full file-system access",
+      "rationale": "Browsing is implied by the access request, not described.",
+      "confidence": "Medium",
+      "confidence_score": 0.6,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1005",
+      "technique_name": "Data from Local System",
+      "tactic": "Collection",
+      "kill_chain_phase": "Actions on Objectives",
+      "behavior": "Pulled documents such as software inventories from user desktops",
+      "evidence": "download and exfiltrate sensitive internal documents",
+      "rationale": "Stated.",
+      "confidence": "High",
+      "confidence_score": 0.85,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1041",
+      "technique_name": "Exfiltration Over C2 Channel",
+      "tactic": "Exfiltration",
+      "kill_chain_phase": "Actions on Objectives",
+      "behavior": "Exfiltration through the Remote Support file transfer service",
+      "evidence": "native BeyondTrust Remote Support file transfer service to download and exfiltrate",
+      "rationale": "Exfil stated; treating the RS channel as C2 is an analyst mapping choice.",
+      "confidence": "Medium",
+      "confidence_score": 0.6,
+      "framework": "ATT&CK",
+      "performed_by": []
+    },
+    {
+      "technique_id": "T1090.001",
+      "technique_name": "Internal Proxy",
+      "tactic": "Command and Control",
+      "kill_chain_phase": "Command & Control",
+      "behavior": "BARECLAW SOCKS5 on 127.0.0.1:19800, exposed through an HAProxy ACL",
+      "evidence": "server websocks5srv 127.0.0.1:19800",
+      "rationale": "Config shown verbatim.",
+      "confidence": "High",
+      "confidence_score": 0.95,
+      "framework": "ATT&CK",
+      "performed_by": [
+        "BARECLAW"
+      ]
+    },
+    {
+      "technique_id": "T1572",
+      "technique_name": "Protocol Tunneling",
+      "tactic": "Command and Control",
+      "kill_chain_phase": "Command & Control",
+      "behavior": "SOCKS5 carried inside WebSocket",
+      "evidence": "a SOCKS5 proxy service carried over the WebSocket transport",
+      "rationale": "Stated.",
+      "confidence": "High",
+      "confidence_score": 0.9,
+      "framework": "ATT&CK",
+      "performed_by": [
+        "BARECLAW"
+      ]
+    },
+    {
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "tactic": "Command and Control",
+      "kill_chain_phase": "Installation",
+      "behavior": "BARECLAW binary present at /tmp/ingredi_ws",
+      "evidence": "/tmp/ingredi_ws --listen 19800",
+      "rationale": "How the binary arrived is not described; inferred from its presence.",
+      "confidence": "Medium",
+      "confidence_score": 0.65,
+      "framework": "ATT&CK",
+      "performed_by": []
+    }
+  ],
+  "indicators": {
+    "sha256": [
+      {
+        "value": "dc14e215269a93fdbc4c1a80b984c23faf7af0911c6dbb85309796a6f2ae95fb",
+        "filename": "mangoapi.php",
+        "family": "SAWFLY",
+        "confidence_score": 0.95
+      },
+      {
+        "value": "1f19b9a27d79c11bda00a1e8faf74a7fdd683d38ccef1b60df2fd0307e3aa462",
+        "filename": "ingredi_ws",
+        "family": "BARECLAW",
+        "confidence_score": 0.95
+      }
+    ]
+  },
+  "cves": [
+    {
+      "id": "CVE-2026-102764",
+      "context": "Exploited as zero-day in this intrusion",
+      "role": "exploited"
+    },
+    {
+      "id": "CVE-2023-46805",
+      "context": "Historical: prior ARMORY CASTLE mass exploitation (Ivanti), context only",
+      "role": "context"
+    },
+    {
+      "id": "CVE-2024-21887",
+      "context": "Historical: prior ARMORY CASTLE mass exploitation (Ivanti), context only",
+      "role": "context"
+    }
+  ],
+  "file_paths": [
+    {
+      "path": "/usr/bin/dbus-authd",
+      "context": "SUID-root copy of /bin/sh"
+    },
+    {
+      "path": "/home/bomgar/sbin/post_boot.d/zz-root-persist",
+      "context": "Boot persistence script"
+    },
+    {
+      "path": "/ns/config/sudoers.template",
+      "context": "Modified: NOPASSWD entry appended"
+    },
+    {
+      "path": "/ns/config/haproxy.conf",
+      "context": "Modified: acl wswsws / backend webskd3"
+    },
+    {
+      "path": "/tmp/ingredi_ws",
+      "context": "BARECLAW binary"
+    },
+    {
+      "path": "/%SITE_SERVICE_ACCOUNT%/ingredi/app/laravel/public/mangoapi.php",
+      "context": "SAWFLY location (dir + filename joined by analyst)"
+    },
+    {
+      "path": "/home/bomgar/log/bt-secrets.log",
+      "context": "Deleted after vault access"
+    }
+  ],
+  "host_network_artifacts": [
+    {
+      "type": "uri",
+      "value": "/app_84304470%2Ephp",
+      "context": "POST target of the staging webshell"
+    },
+    {
+      "type": "http_param",
+      "value": "_c94mfe",
+      "context": "SAWFLY POST parameter; absent -> 404"
+    },
+    {
+      "type": "uri",
+      "value": "/uidchanarge",
+      "context": "BARECLAW WebSocket path routed by HAProxy"
+    },
+    {
+      "type": "port",
+      "value": "19800/tcp (localhost)",
+      "context": "BARECLAW listener"
+    },
+    {
+      "type": "config_string",
+      "value": "acl wswsws path /uidchanarge",
+      "context": "HAProxy ACL added"
+    },
+    {
+      "type": "config_string",
+      "value": "backend webskd3 / server websocks5srv",
+      "context": "HAProxy backend added"
+    },
+    {
+      "type": "command",
+      "value": "/ns/sbin/bt-secrets get vault",
+      "context": "Vault dump (3 syntax variants)"
+    },
+    {
+      "type": "command",
+      "value": "/ns/sbin/bt-sysconfig --no-restart misc",
+      "context": "Forces sudoers rebuild from template"
+    }
+  ],
+  "malware": [
+    {
+      "name": "SAWFLY",
+      "aliases": [],
+      "evidence": "SAWFLY (mangoapi.php) is an obfuscated, lightweight PHP webshell",
+      "confidence": "High",
+      "malware_types": [
+        "webshell"
+      ],
+      "is_family": true
+    },
+    {
+      "name": "BARECLAW",
+      "aliases": [],
+      "evidence": "BARECLAW is a tunneler written in C that provides a SOCKS5 proxy service",
+      "confidence": "High",
+      "malware_types": [
+        "backdoor"
+      ],
+      "is_family": true
+    },
+    {
+      "name": "Unnamed staging webshell (app_84304470%2Ephp)",
+      "aliases": [],
+      "evidence": "Mandiant was unable to recover the file associated with the POST requests",
+      "confidence": "Medium",
+      "malware_types": [
+        "webshell"
+      ],
+      "is_family": false
+    }
+  ],
+  "threat_actors": [
+    {
+      "name": "ARMORY CASTLE",
+      "aliases": [
+        "UNC5221"
+      ],
+      "evidence": "suspected PRC-nexus espionage threat actor (formerly tracked as UNC5221)",
+      "confidence": "High"
+    },
+    {
+      "name": "UNC5221",
+      "aliases": [
+        "ARMORY CASTLE"
+      ],
+      "evidence": "formerly tracked as UNC5221",
+      "confidence": "High"
+    }
+  ],
+  "enrichment": {
+    "mitre_actor": {
+      "actor_enrichment": [
+        {
+          "query": "ARMORY CASTLE",
+          "matched": false,
+          "suggestions": []
+        },
+        {
+          "query": "UNC5221",
+          "matched": false,
+          "suggestions": []
+        }
+      ],
+      "invalid_technique_ids": []
+    },
+    "related_attack_campaign": {
+      "id": "C0029",
+      "name": "Cutting Edge",
+      "actors": "UNC5221/UTA0178, UNC5325",
+      "window": "2023-12-01 to 2024-02-01",
+      "technique_overlap": [
+        "T1005",
+        "T1059.004",
+        "T1070.004",
+        "T1105",
+        "T1190",
+        "T1505.003",
+        "T1572",
+        "T1685.006"
+      ]
+    },
+    "virustotal": {
+      "skipped": true,
+      "reason": "VT_API_KEY not set",
+      "hashes_seen": 2
+    }
+  },
+  "attribution": {
+    "actor": "ARMORY CASTLE",
+    "confidence_score": 0.85,
+    "description": "Suspected PRC-nexus espionage actor, formerly tracked as UNC5221. Exploits edge-appliance zero-days; active since at least October 2023 per GTIG.",
+    "evidence": "GTIG attributes the zero-day exploitation of CVE-2026-102764 and the subsequent deployment of SAWFLY and BARECLAW to ARMORY CASTLE"
+  },
+  "related_campaigns": [
+    {
+      "attack_id": "C0029",
+      "name": "Cutting Edge",
+      "url": "https://attack.mitre.org/campaigns/C0029/",
+      "first_seen": "2023-12-01T05:00:00.000Z",
+      "last_seen": "2024-02-01T05:00:00.000Z",
+      "description": "Ivanti Connect Secure zero-day campaign; ATT&CK attributes it to actors variously identified as UNC5221/UTA0178 and UNC5325.",
+      "confidence_score": 0.6,
+      "relationship_note": "ATT&CK names UNC5221 among several designations for C0029; hedged, so related-to rather than attributed-to."
+    }
+  ],
+  "summary": "Zero-day exploitation of CVE-2026-102764 in BeyondTrust Remote Support by ARMORY CASTLE (fka UNC5221), followed by SUID and sudoers-template privilege persistence, vault access attempts, admin role abuse, BARECLAW tunneling via HAProxy and log wiping.",
+  "removed_false_positives": [
+    {
+      "value": "sudoers.template",
+      "reason": "filename matched domain regex (.template not in FILE_EXT)"
+    },
+    {
+      "value": "127.0.0.1",
+      "reason": "loopback HAProxy backend target; config artifact, not an IOC"
+    }
+  ],
+  "excluded_url_path_hashes": [
+    {
+      "value": "194e0cb2a231aaf8e6b4bee93437c85b434dda7e327a5f483b79f7ff5bfcaa5e",
+      "type": "sha256",
+      "context": "C GTI Collection: https://www.virustotal.com/gui/collection/194e0cb2a231aaf8e6b4bee93437c85b434dda7e327a5f483b79f7ff5bfcaa5e Filename | Description | SHA-256 app_84304470%2Ephp | Stagi"
+    }
+  ]
+}
