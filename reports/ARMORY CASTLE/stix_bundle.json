@@ -1,0 +1,1579 @@
+{
+  "type": "bundle",
+  "id": "bundle--7e29ff23-5e56-407f-afe9-4e79f8fafd34",
+  "objects": [
+    {
+      "id": "extension-definition--60a3c5c5-0d10-413e-aab3-9e08dde9e88d",
+      "type": "extension-definition",
+      "spec_version": "2.1",
+      "name": "TLP 2.0",
+      "description": "This defines TLP 2.0 as a STIX extension",
+      "created": "2022-10-01T00:00:00.000Z",
+      "modified": "2022-10-01T00:00:00.000Z",
+      "created_by_ref": "identity--b3bca3c2-1f3d-4b54-b44f-dac42c3a8f01",
+      "schema": "https://github.com/oasis-open/cti-stix-common-objects/tree/master/extension-definition-specifications/tlp-2.0",
+      "version": "1.0.0",
+      "extension_types": [
+        "property-extension"
+      ]
+    },
+    {
+      "type": "marking-definition",
+      "spec_version": "2.1",
+      "id": "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+      "created": "2022-10-01T00:00:00.000Z",
+      "name": "TLP:CLEAR",
+      "extensions": {
+        "extension-definition--60a3c5c5-0d10-413e-aab3-9e08dde9e88d": {
+          "extension_type": "property-extension",
+          "tlp_2_0": "clear"
+        }
+      }
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "name": "Mayuresh Dani",
+      "identity_class": "individual"
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--0e6a7027-b1ad-4fd8-96ea-d909e70290ef",
+      "name": "Account Manipulation",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1098",
+          "url": "https://attack.mitre.org/techniques/T1098"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "persistence"
+        },
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "privilege-escalation"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--1d2447ec-fbc8-42fc-9103-8587808f9cec",
+      "name": "Protocol Tunneling",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1572",
+          "url": "https://attack.mitre.org/techniques/T1572"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "command-and-control"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--208fa2c2-e002-4c17-bf2d-7787b7110caf",
+      "name": "Valid Accounts",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078",
+          "url": "https://attack.mitre.org/techniques/T1078"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "stealth"
+        },
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "persistence"
+        },
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "privilege-escalation"
+        },
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "initial-access"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--21db64c3-6933-4ab7-9623-5103b2d3770b",
+      "name": "File Deletion",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1070.004",
+          "url": "https://attack.mitre.org/techniques/T1070/004"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "stealth"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--260b7600-5bdc-457b-a337-4aaad350f467",
+      "name": "Match Legitimate Resource Name or Location",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005",
+          "url": "https://attack.mitre.org/techniques/T1036/005"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "stealth"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--4d867247-8d76-4d1c-a382-de740dd11e45",
+      "name": "Internal Proxy",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1090.001",
+          "url": "https://attack.mitre.org/techniques/T1090/001"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "command-and-control"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--579481a2-f30d-4295-8d2a-1ff82caf4ae0",
+      "name": "Exfiltration Over C2 Channel",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1041",
+          "url": "https://attack.mitre.org/techniques/T1041"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "exfiltration"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--5af29d9e-46bc-49a9-bc8d-adb99faf52f6",
+      "name": "Symmetric Cryptography",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1573.001",
+          "url": "https://attack.mitre.org/techniques/T1573/001"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "command-and-control"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--5b9067d2-662d-4e4c-8931-18e43920fda8",
+      "name": "File and Directory Discovery",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1083",
+          "url": "https://attack.mitre.org/techniques/T1083"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "discovery"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--5c777fb9-f0a3-479a-8bbd-85518bbd8ccb",
+      "name": "Data from Local System",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1005",
+          "url": "https://attack.mitre.org/techniques/T1005"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "collection"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--5ecbfe5a-02f7-4554-958c-ee89415dc0f4",
+      "name": "Remote Access Tools",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1219",
+          "url": "https://attack.mitre.org/techniques/T1219"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "command-and-control"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--74f0baf0-5323-475f-a8e2-4d8657a26e07",
+      "name": "Unix Shell",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1059.004",
+          "url": "https://attack.mitre.org/techniques/T1059/004"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "execution"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--87412a05-96c8-416e-92c1-2b49a26f9cbf",
+      "name": "Exploit Public-Facing Application",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1190",
+          "url": "https://attack.mitre.org/techniques/T1190"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "initial-access"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--95d44887-1880-4d91-9951-925622fc1e28",
+      "name": "Sudo and Sudo Caching",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1548.003",
+          "url": "https://attack.mitre.org/techniques/T1548/003"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "privilege-escalation"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--9fd6ae7b-8746-4c90-b728-bfeeae6e2f8c",
+      "name": "Ingress Tool Transfer",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1105",
+          "url": "https://attack.mitre.org/techniques/T1105"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "command-and-control"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--a0344a82-e59f-4bf1-82b5-bd0889003690",
+      "name": "Clear Linux or Mac System Logs",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1685.006",
+          "url": "https://attack.mitre.org/techniques/T1685/006"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "defense-impairment"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--be8a23a8-a3fb-48a9-b1ad-4f76dd131f8a",
+      "name": "Web Protocols",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1071.001",
+          "url": "https://attack.mitre.org/techniques/T1071/001"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "command-and-control"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--d19c7060-59f6-4163-8600-8e81c167319d",
+      "name": "Credentials from Password Stores",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1555",
+          "url": "https://attack.mitre.org/techniques/T1555"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "credential-access"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--d5a03894-f265-43ed-9c70-9e582ab66398",
+      "name": "Standard Encoding",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1132.001",
+          "url": "https://attack.mitre.org/techniques/T1132/001"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "command-and-control"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--d8870328-f2fe-4890-9ecf-1d61b1a02bac",
+      "name": "Web Shell",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1505.003",
+          "url": "https://attack.mitre.org/techniques/T1505/003"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "persistence"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--e4769c77-c7e3-421b-9e6c-b3b6c2967e69",
+      "name": "Obfuscated Files or Information",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027",
+          "url": "https://attack.mitre.org/techniques/T1027"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "stealth"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--e5b29f88-245b-4e08-a78c-f5348334f61b",
+      "name": "Boot or Logon Initialization Scripts",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1037",
+          "url": "https://attack.mitre.org/techniques/T1037"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "persistence"
+        },
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "privilege-escalation"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--ff26c9bd-e0f6-46b0-801e-6ae33a887992",
+      "name": "Setuid and Setgid",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1548.001",
+          "url": "https://attack.mitre.org/techniques/T1548/001"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "privilege-escalation"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "id": "campaign--0bae1bc6-49c8-4fd8-8328-7f53db3ac0b2",
+      "name": "Cutting Edge",
+      "description": "Ivanti Connect Secure zero-day campaign; ATT&CK attributes it to actors variously identified as UNC5221/UTA0178 and UNC5325.",
+      "first_seen": "2023-12-01T05:00:00.000Z",
+      "last_seen": "2024-02-01T05:00:00.000Z",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "C0029",
+          "url": "https://attack.mitre.org/campaigns/C0029/"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "id": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "name": "BeyondTrust Remote Support appliance intrusion (single Mandiant IR engagement)",
+      "description": "One engagement described end to end; no second victim or wave reported.",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "indicator",
+      "id": "indicator--7513e4ce-70e0-4bfd-bf28-7609c2e9a3b5",
+      "name": "BARECLAW (ingredi_ws)",
+      "description": "SHA256 of ingredi_ws (BARECLAW), from ARMORY CASTLE Exploits BeyondTrust.",
+      "pattern": "[file:hashes.'SHA-256' = '1f19b9a27d79c11bda00a1e8faf74a7fdd683d38ccef1b60df2fd0307e3aa462']",
+      "pattern_type": "stix",
+      "valid_from": "2026-10-15T00:00:00.000Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "indicator",
+      "id": "indicator--c0bf39ed-7b37-4a54-b8a6-d728dd63ed58",
+      "name": "SAWFLY (mangoapi.php)",
+      "description": "SHA256 of mangoapi.php (SAWFLY), from ARMORY CASTLE Exploits BeyondTrust.",
+      "pattern": "[file:hashes.'SHA-256' = 'dc14e215269a93fdbc4c1a80b984c23faf7af0911c6dbb85309796a6f2ae95fb']",
+      "pattern_type": "stix",
+      "valid_from": "2026-10-15T00:00:00.000Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "intrusion-set",
+      "id": "intrusion-set--aa0a552b-e18e-46d5-a7f5-43fb5f2f88ce",
+      "name": "ARMORY CASTLE",
+      "aliases": [
+        "UNC5221"
+      ],
+      "description": "Suspected PRC-nexus espionage actor, formerly tracked as UNC5221. Exploits edge-appliance zero-days; active since at least October 2023 per GTIG.",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "malware",
+      "id": "malware--72336348-8152-4926-b342-d7b896ec3b92",
+      "name": "BARECLAW",
+      "is_family": true,
+      "malware_types": [
+        "backdoor"
+      ],
+      "description": "BARECLAW is a tunneler written in C that provides a SOCKS5 proxy service",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "malware",
+      "id": "malware--9a151b3e-bb8e-4635-b3e9-683d6fe28450",
+      "name": "Unnamed staging webshell (app_84304470%2Ephp)",
+      "is_family": false,
+      "malware_types": [
+        "webshell"
+      ],
+      "description": "Mandiant was unable to recover the file associated with the POST requests",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "malware",
+      "id": "malware--f8fe9d3b-e6f0-4094-85a8-02d6c2e5d08e",
+      "name": "SAWFLY",
+      "is_family": true,
+      "malware_types": [
+        "webshell"
+      ],
+      "description": "SAWFLY (mangoapi.php) is an obfuscated, lightweight PHP webshell",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--03741f52-cda1-474e-97b7-f2dee743a5fa",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--5c777fb9-f0a3-479a-8bbd-85518bbd8ccb",
+      "description": "Pulled documents such as software inventories from user desktops",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 85
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--039e577b-0a5b-4cd8-8c00-72360268d672",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--5af29d9e-46bc-49a9-bc8d-adb99faf52f6",
+      "description": "RC4 with a hardcoded 32-byte key (SAWFLY); token-derived XOR stream (BARECLAW)",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--087275c7-1ed0-4539-a6ff-1b3898436b5b",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--21db64c3-6933-4ab7-9623-5103b2d3770b",
+      "description": "Deleted bt-secrets.log, rotated archives and /tmp/sshauth.*",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--0b21d320-682f-48ee-818e-33b391f72c90",
+      "relationship_type": "uses",
+      "source_ref": "malware--72336348-8152-4926-b342-d7b896ec3b92",
+      "target_ref": "attack-pattern--be8a23a8-a3fb-48a9-b1ad-4f76dd131f8a",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--0b8554d8-407b-47a9-bd9d-6d16786c6de6",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--260b7600-5bdc-457b-a337-4aaad350f467",
+      "description": "SUID shell named to resemble a D-Bus component in /usr/bin",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 60
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--15e95c8f-b2fb-46da-a4a4-6f4a93135312",
+      "relationship_type": "uses",
+      "source_ref": "malware--72336348-8152-4926-b342-d7b896ec3b92",
+      "target_ref": "attack-pattern--4d867247-8d76-4d1c-a382-de740dd11e45",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--1f2cac3c-8f79-41c7-a0b2-a53e111acf68",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--87412a05-96c8-416e-92c1-2b49a26f9cbf",
+      "description": "Zero-day exploitation of CVE-2026-102764 in BeyondTrust Remote Support",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--2369c98e-4cd1-4ae2-870c-c6c5b8d8eef3",
+      "relationship_type": "uses",
+      "source_ref": "malware--f8fe9d3b-e6f0-4094-85a8-02d6c2e5d08e",
+      "target_ref": "attack-pattern--e4769c77-c7e3-421b-9e6c-b3b6c2967e69",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 85
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--27991575-64b8-4374-b8cf-ae1c09434879",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--208fa2c2-e002-4c17-bf2d-7787b7110caf",
+      "description": "Logged into /login with a compromised Administrator account",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--280728c6-b4ce-4f17-b024-47c2c7f5f5f0",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "malware--f8fe9d3b-e6f0-4094-85a8-02d6c2e5d08e",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--2d2d97fd-fa93-4491-bf70-c18c7a83ed4a",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--e5b29f88-245b-4e08-a78c-f5348334f61b",
+      "description": "zz-root-persist dropped in the vendor post_boot.d startup directory",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 85
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--32cf806e-0dfe-4788-b942-3e56c7c8f9b9",
+      "relationship_type": "uses",
+      "source_ref": "malware--f8fe9d3b-e6f0-4094-85a8-02d6c2e5d08e",
+      "target_ref": "attack-pattern--be8a23a8-a3fb-48a9-b1ad-4f76dd131f8a",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--3ef403f8-c510-40fb-b635-7b80a4f8455b",
+      "relationship_type": "uses",
+      "source_ref": "malware--9a151b3e-bb8e-4635-b3e9-683d6fe28450",
+      "target_ref": "attack-pattern--d8870328-f2fe-4890-9ecf-1d61b1a02bac",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--4512ba5b-a03d-4738-a812-6c3607e36812",
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--aa0a552b-e18e-46d5-a7f5-43fb5f2f88ce",
+      "target_ref": "malware--9a151b3e-bb8e-4635-b3e9-683d6fe28450",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--4fe1457f-9826-47f6-9aae-01020d9cba66",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--d19c7060-59f6-4163-8600-8e81c167319d",
+      "description": "Dumping the appliance vault with the native bt-secrets CLI",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 85
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--50bccc24-ecca-4dae-9614-1784a812f420",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--579481a2-f30d-4295-8d2a-1ff82caf4ae0",
+      "description": "Exfiltration through the Remote Support file transfer service",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 60
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--56c69734-a6ed-40db-bef8-a78d76485113",
+      "relationship_type": "uses",
+      "source_ref": "malware--f8fe9d3b-e6f0-4094-85a8-02d6c2e5d08e",
+      "target_ref": "attack-pattern--d8870328-f2fe-4890-9ecf-1d61b1a02bac",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--57971293-e5db-4259-b693-01f1ab1c6429",
+      "relationship_type": "targets",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "vulnerability--ee7ca0ed-4f8e-4ed9-9e07-bbcf1795fe87",
+      "description": "Exploited as zero-day in this intrusion",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--5aefdba0-ffac-4297-a002-c3a222ea7522",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "malware--72336348-8152-4926-b342-d7b896ec3b92",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--5f527f76-4845-48e6-a3d9-9aec44e605fe",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--95d44887-1880-4d91-9951-925622fc1e28",
+      "description": "NOPASSWD: ALL appended to sudoers.template, rebuilt via bt-sysconfig",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--6386d315-4783-4e59-aaae-57d774d21ee9",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--4d867247-8d76-4d1c-a382-de740dd11e45",
+      "description": "BARECLAW SOCKS5 on 127.0.0.1:19800, exposed through an HAProxy ACL",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--6f726216-c622-420d-9527-c8575bf77587",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c0bf39ed-7b37-4a54-b8a6-d728dd63ed58",
+      "target_ref": "malware--f8fe9d3b-e6f0-4094-85a8-02d6c2e5d08e",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--7ac90ad9-25fe-41c3-93a3-21be803bb1d9",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--1d2447ec-fbc8-42fc-9103-8587808f9cec",
+      "description": "SOCKS5 carried inside WebSocket",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--7f1920c0-446b-4057-8d7f-f6b7aeb89106",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--9fd6ae7b-8746-4c90-b728-bfeeae6e2f8c",
+      "description": "BARECLAW binary present at /tmp/ingredi_ws",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 65
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--862ff9f6-917c-4856-a32a-ac22594fc0ad",
+      "relationship_type": "uses",
+      "source_ref": "malware--f8fe9d3b-e6f0-4094-85a8-02d6c2e5d08e",
+      "target_ref": "attack-pattern--5af29d9e-46bc-49a9-bc8d-adb99faf52f6",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--8acf1839-9c48-4f72-95aa-4cc557a39111",
+      "relationship_type": "related-to",
+      "source_ref": "intrusion-set--aa0a552b-e18e-46d5-a7f5-43fb5f2f88ce",
+      "target_ref": "campaign--0bae1bc6-49c8-4fd8-8328-7f53db3ac0b2",
+      "description": "ATT&CK names UNC5221 among several designations for C0029; hedged, so related-to rather than attributed-to.",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 60
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--93fad2e1-f6f7-499a-b467-1a8980e42135",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--5ecbfe5a-02f7-4554-958c-ee89415dc0f4",
+      "description": "Used the product's own support sessions to reach internal endpoints",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 85
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--95188c47-e503-44c3-bd19-3e63da06b3ca",
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--aa0a552b-e18e-46d5-a7f5-43fb5f2f88ce",
+      "target_ref": "malware--f8fe9d3b-e6f0-4094-85a8-02d6c2e5d08e",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--a0f371be-3825-4a82-8953-06b1a87481c2",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--e4769c77-c7e3-421b-9e6c-b3b6c2967e69",
+      "description": "SAWFLY is obfuscated PHP with an obfuscated trigger parameter",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 85
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--a1e4016b-3d17-4b81-ace9-77b54936f20b",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--74f0baf0-5323-475f-a8e2-4d8657a26e07",
+      "description": "sh -c log deletion and a bash persistence script",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--a3c52892-ce7c-4800-a132-605cbff250a4",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--ff26c9bd-e0f6-46b0-801e-6ae33a887992",
+      "description": "Copied /bin/sh to /usr/bin/dbus-authd, chowned to root, set SUID",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--a895eb49-39f7-4af8-8f59-bd1b3dd8d58f",
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--aa0a552b-e18e-46d5-a7f5-43fb5f2f88ce",
+      "target_ref": "malware--72336348-8152-4926-b342-d7b896ec3b92",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--aee0dbdf-3e67-4522-8486-f27956dc17ef",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "malware--9a151b3e-bb8e-4635-b3e9-683d6fe28450",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--b1b09c94-973a-4144-8ce6-deb1e1e37f64",
+      "relationship_type": "uses",
+      "source_ref": "malware--f8fe9d3b-e6f0-4094-85a8-02d6c2e5d08e",
+      "target_ref": "attack-pattern--d5a03894-f265-43ed-9c70-9e582ab66398",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 65
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--b2616080-36cb-447c-8f42-97c7621d0273",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--0e6a7027-b1ad-4fd8-96ea-d909e70290ef",
+      "description": "Raised Jump Item and Team roles from No Access to Administrator",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--b3958443-c6ed-4c55-b0a7-cad0d3bc527d",
+      "relationship_type": "uses",
+      "source_ref": "malware--72336348-8152-4926-b342-d7b896ec3b92",
+      "target_ref": "attack-pattern--5af29d9e-46bc-49a9-bc8d-adb99faf52f6",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--b5ff1837-ef5b-4df1-9a73-ee715b8f5ae9",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--5b9067d2-662d-4e4c-8931-18e43920fda8",
+      "description": "Requested full file-system access on reached endpoints",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 60
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--bb565c22-9c6d-4e79-8caf-9355814e46bb",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7513e4ce-70e0-4bfd-bf28-7609c2e9a3b5",
+      "target_ref": "malware--72336348-8152-4926-b342-d7b896ec3b92",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--bf94e343-3258-4a1d-a9fa-003725dd7823",
+      "relationship_type": "uses",
+      "source_ref": "malware--72336348-8152-4926-b342-d7b896ec3b92",
+      "target_ref": "attack-pattern--1d2447ec-fbc8-42fc-9103-8587808f9cec",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--c8ce67d6-e267-4e19-a616-6ccac069333f",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--a0344a82-e59f-4bf1-82b5-bd0889003690",
+      "description": "rm -f of /var/log/messages and /ns/log/* appliance logs",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--cf6631d3-e0a2-4e32-b14a-f9d03349ccc5",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--d8870328-f2fe-4890-9ecf-1d61b1a02bac",
+      "description": "Unrecovered staging webshell, then SAWFLY written to the Laravel web root",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 95
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--e2bceda8-fe23-48c8-a725-6df4a89eef6e",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--be8a23a8-a3fb-48a9-b1ad-4f76dd131f8a",
+      "description": "C2 over HTTP POST to SAWFLY; WebSocket to BARECLAW through HAProxy",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 90
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--ee486390-702e-41c1-9931-e92724e6ee0d",
+      "relationship_type": "uses",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "attack-pattern--d5a03894-f265-43ed-9c70-9e582ab66398",
+      "description": "Base32 wrapping of SAWFLY C2 traffic",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 65
+    },
+    {
+      "type": "relationship",
+      "id": "relationship--f424b351-9b8a-4038-b19d-fbcfa3283161",
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+      "target_ref": "intrusion-set--aa0a552b-e18e-46d5-a7f5-43fb5f2f88ce",
+      "description": "GTIG attributes the zero-day exploitation of CVE-2026-102764 and the subsequent deployment of SAWFLY and BARECLAW to ARMORY CASTLE",
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "confidence": 85
+    },
+    {
+      "type": "report",
+      "id": "report--8bd67e20-7bfa-42b5-afed-3b52f4855d65",
+      "name": "Analysis: ARMORY CASTLE Exploits BeyondTrust",
+      "published": "2026-10-15T00:00:00.000Z",
+      "report_types": [
+        "threat-report"
+      ],
+      "description": "Zero-day exploitation of CVE-2026-102764 in BeyondTrust Remote Support by ARMORY CASTLE (fka UNC5221), followed by SUID and sudoers-template privilege persistence, vault access attempts, admin role abuse, BARECLAW tunneling via HAProxy and log wiping.",
+      "object_refs": [
+        "attack-pattern--0e6a7027-b1ad-4fd8-96ea-d909e70290ef",
+        "attack-pattern--1d2447ec-fbc8-42fc-9103-8587808f9cec",
+        "attack-pattern--208fa2c2-e002-4c17-bf2d-7787b7110caf",
+        "attack-pattern--21db64c3-6933-4ab7-9623-5103b2d3770b",
+        "attack-pattern--260b7600-5bdc-457b-a337-4aaad350f467",
+        "attack-pattern--4d867247-8d76-4d1c-a382-de740dd11e45",
+        "attack-pattern--579481a2-f30d-4295-8d2a-1ff82caf4ae0",
+        "attack-pattern--5af29d9e-46bc-49a9-bc8d-adb99faf52f6",
+        "attack-pattern--5b9067d2-662d-4e4c-8931-18e43920fda8",
+        "attack-pattern--5c777fb9-f0a3-479a-8bbd-85518bbd8ccb",
+        "attack-pattern--5ecbfe5a-02f7-4554-958c-ee89415dc0f4",
+        "attack-pattern--74f0baf0-5323-475f-a8e2-4d8657a26e07",
+        "attack-pattern--87412a05-96c8-416e-92c1-2b49a26f9cbf",
+        "attack-pattern--95d44887-1880-4d91-9951-925622fc1e28",
+        "attack-pattern--9fd6ae7b-8746-4c90-b728-bfeeae6e2f8c",
+        "attack-pattern--a0344a82-e59f-4bf1-82b5-bd0889003690",
+        "attack-pattern--be8a23a8-a3fb-48a9-b1ad-4f76dd131f8a",
+        "attack-pattern--d19c7060-59f6-4163-8600-8e81c167319d",
+        "attack-pattern--d5a03894-f265-43ed-9c70-9e582ab66398",
+        "attack-pattern--d8870328-f2fe-4890-9ecf-1d61b1a02bac",
+        "attack-pattern--e4769c77-c7e3-421b-9e6c-b3b6c2967e69",
+        "attack-pattern--e5b29f88-245b-4e08-a78c-f5348334f61b",
+        "attack-pattern--ff26c9bd-e0f6-46b0-801e-6ae33a887992",
+        "campaign--0bae1bc6-49c8-4fd8-8328-7f53db3ac0b2",
+        "campaign--d7d2724a-afa2-40e4-ba04-8e3ebb926915",
+        "indicator--7513e4ce-70e0-4bfd-bf28-7609c2e9a3b5",
+        "indicator--c0bf39ed-7b37-4a54-b8a6-d728dd63ed58",
+        "intrusion-set--aa0a552b-e18e-46d5-a7f5-43fb5f2f88ce",
+        "malware--72336348-8152-4926-b342-d7b896ec3b92",
+        "malware--9a151b3e-bb8e-4635-b3e9-683d6fe28450",
+        "malware--f8fe9d3b-e6f0-4094-85a8-02d6c2e5d08e",
+        "relationship--03741f52-cda1-474e-97b7-f2dee743a5fa",
+        "relationship--039e577b-0a5b-4cd8-8c00-72360268d672",
+        "relationship--087275c7-1ed0-4539-a6ff-1b3898436b5b",
+        "relationship--0b21d320-682f-48ee-818e-33b391f72c90",
+        "relationship--0b8554d8-407b-47a9-bd9d-6d16786c6de6",
+        "relationship--15e95c8f-b2fb-46da-a4a4-6f4a93135312",
+        "relationship--1f2cac3c-8f79-41c7-a0b2-a53e111acf68",
+        "relationship--2369c98e-4cd1-4ae2-870c-c6c5b8d8eef3",
+        "relationship--27991575-64b8-4374-b8cf-ae1c09434879",
+        "relationship--280728c6-b4ce-4f17-b024-47c2c7f5f5f0",
+        "relationship--2d2d97fd-fa93-4491-bf70-c18c7a83ed4a",
+        "relationship--32cf806e-0dfe-4788-b942-3e56c7c8f9b9",
+        "relationship--3ef403f8-c510-40fb-b635-7b80a4f8455b",
+        "relationship--4512ba5b-a03d-4738-a812-6c3607e36812",
+        "relationship--4fe1457f-9826-47f6-9aae-01020d9cba66",
+        "relationship--50bccc24-ecca-4dae-9614-1784a812f420",
+        "relationship--56c69734-a6ed-40db-bef8-a78d76485113",
+        "relationship--57971293-e5db-4259-b693-01f1ab1c6429",
+        "relationship--5aefdba0-ffac-4297-a002-c3a222ea7522",
+        "relationship--5f527f76-4845-48e6-a3d9-9aec44e605fe",
+        "relationship--6386d315-4783-4e59-aaae-57d774d21ee9",
+        "relationship--6f726216-c622-420d-9527-c8575bf77587",
+        "relationship--7ac90ad9-25fe-41c3-93a3-21be803bb1d9",
+        "relationship--7f1920c0-446b-4057-8d7f-f6b7aeb89106",
+        "relationship--862ff9f6-917c-4856-a32a-ac22594fc0ad",
+        "relationship--8acf1839-9c48-4f72-95aa-4cc557a39111",
+        "relationship--93fad2e1-f6f7-499a-b467-1a8980e42135",
+        "relationship--95188c47-e503-44c3-bd19-3e63da06b3ca",
+        "relationship--a0f371be-3825-4a82-8953-06b1a87481c2",
+        "relationship--a1e4016b-3d17-4b81-ace9-77b54936f20b",
+        "relationship--a3c52892-ce7c-4800-a132-605cbff250a4",
+        "relationship--a895eb49-39f7-4af8-8f59-bd1b3dd8d58f",
+        "relationship--aee0dbdf-3e67-4522-8486-f27956dc17ef",
+        "relationship--b1b09c94-973a-4144-8ce6-deb1e1e37f64",
+        "relationship--b2616080-36cb-447c-8f42-97c7621d0273",
+        "relationship--b3958443-c6ed-4c55-b0a7-cad0d3bc527d",
+        "relationship--b5ff1837-ef5b-4df1-9a73-ee715b8f5ae9",
+        "relationship--bb565c22-9c6d-4e79-8caf-9355814e46bb",
+        "relationship--bf94e343-3258-4a1d-a9fa-003725dd7823",
+        "relationship--c8ce67d6-e267-4e19-a616-6ccac069333f",
+        "relationship--cf6631d3-e0a2-4e32-b14a-f9d03349ccc5",
+        "relationship--e2bceda8-fe23-48c8-a725-6df4a89eef6e",
+        "relationship--ee486390-702e-41c1-9931-e92724e6ee0d",
+        "relationship--f424b351-9b8a-4038-b19d-fbcfa3283161",
+        "vulnerability--ee7ca0ed-4f8e-4ed9-9e07-bbcf1795fe87"
+      ],
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group / Mandiant",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-beyondtrust",
+          "description": "ARMORY CASTLE Exploits BeyondTrust"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "vulnerability",
+      "id": "vulnerability--ee7ca0ed-4f8e-4ed9-9e07-bbcf1795fe87",
+      "name": "CVE-2026-102764",
+      "description": "Exploited as zero-day in this intrusion",
+      "external_references": [
+        {
+          "source_name": "cve",
+          "external_id": "CVE-2026-102764"
+        }
+      ],
+      "spec_version": "2.1",
+      "created": "2026-10-15T00:00:00.000Z",
+      "modified": "2026-10-15T00:00:00.000Z",
+      "created_by_ref": "identity--3943ab92-3036-4f45-87fa-fcc162bb977f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    }
+  ]
+}
